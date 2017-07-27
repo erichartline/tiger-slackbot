@@ -1,0 +1,23 @@
+{
+  "name": "bears-team-27",
+  "version": "1.0.0",
+  "description": "Slackbot building project for Chingu Voyage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wildlifehexagon/bears-team-27.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wildlifehexagon/bears-team-27/issues"
+  },
+  "homepage": "https://github.com/wildlifehexagon/bears-team-27#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  }
+}
