@@ -1,0 +1,669 @@
+{
+    "questions": [
+        {
+            "question":"Can you tell me a little about yourself?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Why should we hire you?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What are your greatest professional strengths?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What do you consider to be your weaknesses?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What is your greatest professional achievement?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Tell me about a challenge or conflict you've faced at work, and how you dealt with it.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Where do you see yourself in five years?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What's your dream job?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Why are you leaving your current job?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What are you looking for in a new position?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What type of work environment do you prefer?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What's a time you exercised leadership?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What's a time you disagreed with a decision that was made at work?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"How would your boss and co-workers describe you?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Why was there a gap in your employment?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Can you explain why you changed career paths?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"How do you deal with pressure or stressful situations?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What would your first 30, 60, or 90 days look like in this role?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What do you like to do outside of work?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"If you were an animal, which one would you want to be?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Talk about a time when you had to work closely with someone whose personality was very different from yours.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time you faced a conflict while working on a team. How did you handle that?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when you struggled to build a relationship with someone important. How did you eventually overcome that?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"We all make mistakes we wish we could take back. Tell me about a time you wish you’d handled a situation differently with a colleague.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you needed to get information from someone who wasn’t very responsive. What did you do?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when it was especially important to make a good impression on a client. How did you go about doing so?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time when you did not meet a client’s expectation. What happened, and how did you attempt to rectify the situation?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time when you made sure a customer was pleased with your service.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when you had to interact with a difficult client. What was the situation, and how did you handle it?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"When you’re working with a large number of customers, it’s tricky to deliver excellent service to them all. How do you go about prioritizing your customers’ needs?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you were under a lot of pressure. What was going on, and how did you get through it?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when your team or company was undergoing some change. How did that impact you, and how did you adapt?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about the first job you’ve ever had. What did you do to learn the ropes?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time when you had to think on your feet in order to delicately extricate yourself from a difficult or awkward situation.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you failed. How did you deal with this situation?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you had to be very strategic in order to meet all your top priorities.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a long-term project that you managed. How did you keep everything moving along in a timely manner?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Sometimes it’s just not possible to get everything on your to-do list done. Tell me about a time your responsibilities got a little overwhelming. What did you do?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you set a goal for yourself. How did you go about ensuring that you would meet your objective?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time you managed numerous responsibilities. How did you handle that?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time when you were able to successfully persuade someone to see things your way at work.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when you were the resident technical expert. What did you do to make sure everyone was able to understand you?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time when you had to rely on written communication to get your ideas across to your team.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time when you had to explain something fairly complex to a frustrated client. How did you handle this delicate situation?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a successful presentation you gave and why you think it was a hit.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about your proudest professional accomplishment.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when you saw some problem and took the initiative to correct it rather than waiting for someone else to do it.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time when you worked under close supervision or extremely loose supervision. How did you handle that?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time you were able to be creative with your work. What was exciting or difficult about it?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you were dissatisfied in your work. What could have been done to make it better?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"What can you offer us that someone else can not?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What are three things your former manager would like you to improve on?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Tell me about a time you made a mistake.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Discuss your resume.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Discuss your educational background.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Describe yourself.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Tell me how you handled a difficult situation.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"How would you deal with an angry or irate customer?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Give a time when you went above and beyond the requirements for a project.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What was your biggest failure?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What motivates you?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Who’s your mentor?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What gets you up in the morning?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Are you a leader or a follower?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What was the last book you’ve read for fun?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What is your favorite website?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What makes you uncomfortable?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What are some of your leadership experiences?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"How would you describe yourself in one word?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"How does this position compare to others you are applying for?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Have you ever considered being an entrepreneur?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Have you ever stolen a pen from work?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"What kind of boss and coworkers have you had the most and least success with, and why?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"If you could work for any company, where would you work?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"How do you define success?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"What career regrets do you have?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"What would you do if you won $5 million tomorrow?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Have you ever been asked to compromise your integrity by your supervisor or colleague? Tell us about it.",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Can you give us a reason someone may not like working with you?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Tell me about a time you disagreed with a company policy.",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"How did you make time for this interview? Where does your boss think you are right now?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"What is Big O notation, and why is it useful?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What is the DOM?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What is the event loop?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What is a closure?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"How does prototypal inheritance work, and how is it different from classical inheritance?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"Describe a few ways to communicate between a server and a client. Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What is REST, and why do people use it?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"My website is slow. Walk me through diagnosing and fixing it. What are some performance optimizations people use, and when should they be used?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What frameworks have you used? What are the pros and cons of each? Why do people use frameworks? What kinds of problems do frameworks solve?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"Explain event delegation.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What do you think of AMD vs CommonJS?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain why the following doesn't work as an IIFE: function foo(){ }();.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What needs to be changed to properly make it an IIFE?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between a variable that is: null, undefined or undeclared?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"How would you go about checking for any of these states?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is a closure, and how/why would you use one?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's a typical use case for anonymous functions?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"How do you organize your code? (module pattern, classical inheritance?)",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between host objects and native objects?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Difference between: function Person(){}, var person = Person(), and var person = new Person()?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between .call and .apply?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain Function.prototype.bind.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"When would you use document.write()?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between feature detection, feature inference, and using the UA string?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain Ajax in as much detail as possible.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What are the advantages and disadvantages of using Ajax?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain how JSONP works (and how it's not really Ajax).",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Have you ever used JavaScript templating? If so, what libraries have you used?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain 'hoisting'.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between an 'attribute' and a 'property'?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Why is extending built-in JavaScript objects not a good idea?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Difference between document load event and document DOMContentLoaded event?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is the difference between == and ===?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain the same-origin policy with regards to JavaScript.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Make this work: duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Why is it called a Ternary expression, what does the word 'Ternary' indicate?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is 'use strict';? what are the advantages and disadvantages to using it?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Create a for loop that iterates up to 100 while outputting 'fizz' at multiples of 3, 'buzz' at multiples of 5 and 'fizzbuzz' at multiples of 3 and 5",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Why would you use something like the load event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain what a single page app is and how to make one SEO-friendly.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is the extent of your experience with Promises and/or their polyfills?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What are the pros and cons of using Promises instead of callbacks?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What tools and techniques do you use debugging JavaScript code?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What language constructions do you use for iterating over object properties and array items?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain the difference between mutable and immutable objects.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is an example of an immutable object in JavaScript?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What are the pros and cons of immutability?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"How can you achieve immutability in your own code?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain the difference between synchronous and asynchronous functions.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain the differences on the usage of foo between function foo() {} and var foo = function() {}",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        }
+    ]
+}
