@@ -25,25 +25,26 @@ app.post('/', (req, res) => {
   //       image_url: 'https://http.cat/302.jpg'
   //     }
   // ]};
-  fetch(url)
-  .then(function(data) {
-    let question = data.question;
-    let category = data.category;
-    let source = data.source;
-
-    let response = {
-      question: question,
-      category: category,
-      source: source
-    }
-
-  })
-  .catch(function(err) {
-    console.log(err);
-  })
 
   res.json(response);
 });
+
+fetch(url)
+.then(function(data) {
+  let question = data.question;
+  let category = data.category;
+  let source = data.source;
+
+  let response = {
+    question: question,
+    category: category,
+    source: source
+  }
+
+})
+.catch(function(err) {
+  console.log(err);
+})
 
 const server = app.listen(8000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);});
