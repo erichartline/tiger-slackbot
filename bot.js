@@ -2,139 +2,111 @@
 
 const RtmClient = require('@slack/client').RtmClient;
 const MemoryDataStore = require('@slack/client').MemoryDataStore;
-// Import the RTM event constants from the Slack API
-const RTM_EVENTS = require('@slack/client').RTM_EVENTS;
-// Import the client event constants from the Slack API
 const CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
-// require config with API keys
-let config = require('./config');
-// set API token from config.js
-let token = config.api.token;
+const RTM_EVENTS = require('@slack/client').RTM_EVENTS;
+const config = require('./config');
 
-// The Slack constructor takes 2 arguments:
-// token - String representation of the Slack token
-// opts - Objects with options for our implementation
-let slack = new RtmClient(token, {
-  // Sets the level of logging we require
-  logLevel: 'error',
-  // Initialize a data store for our client, this will
-  // load additional helper functions for the storing
-  // and retrieval of data
-  dataStore: new MemoryDataStore(),
-  // Boolean indicating whether Slack should automatically
-  // reconnect after an error response
-  autoReconnect: true,
-  // Boolean indicating whether each message should be marked as // read
-  // or not after it is processed
-  autoMark: true
-});
+class Bot {
+  constructor(opts) {
+    let slackToken = config.api.token;
+    let autoReconnect = opts.autoReconnect || true;
+    let autoMark = opts.autoMark || true;
 
-// Add an event listener for the RTM_CONNECTION_OPENED event,
-//  which is called when the bot
-// connects to a channel. The Slack API can subscribe to
-// events by using the 'on' method
-slack.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, () => {
-  // Get the user's name
-  let user = slack.dataStore.getUserById(slack.activeUserId);
-
-  // Get the team's name
-  let team = slack.dataStore.getTeamById(slack.activeTeamId);
-
-  // Log the slack team name and the bot's name, using ES6's
-  // template string syntax
-  console.log(`Connected to ${team.name} as ${user.name}`);
-
-  // Note how the dataStore object contains a list of all
-  // channels available
-  let channels = getChannels(slack.dataStore.channels);
-
-  // Use Array.map to loop over every instance and return an
-  // array of the names of each channel. Then chain Array.join
-  // to convert the names array to a string
-  let channelNames = channels.map((channel) => {
-    return channel.name;
-  }).join(', ');
-
-  console.log(`Currently in: ${channelNames}`);
-
-  // log the members of the channel
-  channels.forEach((channel) => {
-    // get the members by ID using the data store's
-    // 'getUserById' function
-    let members = channel.members.map((id) => {
-      return slack.dataStore.getUserById(id);
+    this.slack = new RtmClient(slackToken, {
+      logLevel: 'error',
+      dataStore: new MemoryDataStore(),
+      autoReconnect: autoReconnect,
+      autoMark: autoMark
     });
 
-    // Filter out the bots from the member list using Array.filter
-    members = members.filter((member) => {
-      return !member.is_bot;
+    this.slack.on(CLIENT_EVENTS.RTM.RTM_CONNECTION_OPENED, () => {
+      let user = this.slack.dataStore.getUserById(this.slack.activeUserId)
+      let team = this.slack.dataStore.getTeamById(this.slack.activeTeamId);
+
+      this.name = user.name;
+
+      console.log(`Connected to ${team.name} as ${user.name}`);
     });
 
-    // Each member object has a 'name' property, so let's get an
-    // array of names and join them via array.join
-    let memberNames = members.map((member) => {
-      return member.name;
-    }).join(', ');
+    // Create an ES6 Map to store our regular expressions
+    this.keywords = new Map();
 
-    console.log('Members of this channel: ', memberNames);
+    this.slack.on(RTM_EVENTS.MESSAGE, (message) => {
+      // Only process text messages
+      if (!message.text) {
+        return;
+      }
 
-    // Send a greeting to everyone in the channel
-    // slack.sendMessage(`Hello ${memberNames}!`, channel.id);
-  });
-});
+      let channel = this.slack.dataStore.getChannelGroupOrDMById(message.channel);
+      let user = this.slack.dataStore.getUserById(message.user);
 
-slack.on(CLIENT_EVENTS.RTM.AUTHENTICATED, (rtmStartData) => {
-  console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}, but not yet connected to a channel`);
-});
+      // Loop over the keys of the keywords Map object and test each
+      // regular expression against the message's text property
+      for (let regex of this.keywords.keys()) {
+        if (regex.test(message.text)) {
+          let callback = this.keywords.get(regex);
+          callback(message, channel, user);
+        }
+      }
+    });
 
-slack.on(RTM_EVENTS.MESSAGE, (message) => {
-  let user = slack.dataStore.getUserById(message.user)
-
-  if (user && user.is_bot) {
-    return;
+    this.slack.start();
   }
 
-  let channel = slack.dataStore.getChannelGroupOrDMById(message.channel);
-
-  if (message.text) {
-    let msg = message.text.toLowerCase();
-
-    if (/uptime/g.test(msg)) {
-      let dm = slack.dataStore.getDMByName(user.name);
-
-      let uptime = process.uptime();
-
-      // get the uptime in hours, minutes and seconds
-      let minutes = parseInt(uptime / 60, 10),
-          hours = parseInt(minutes / 60, 10),
-          seconds = parseInt(uptime - (minutes * 60) -((hours * 60), 10));
-
-      slack.sendMessage(`I have been running for ${hours} hours, ${minutes} minutes and ${seconds} seconds.`, dm.id);
-    }
-
-    if (/(hello|hi) (bot|awesomebot)/g.test(msg)) {
-      slack.sendMessage(`Hello to you too, ${user.name}!`, channel.id);
-    }
+  // Send a message to a channel, with an optional callback
+  send(message, channel, cb) {
+    this.slack.sendMessage(message, channel.id, () => {
+      if (cb) {
+        cb();
+      }
+    });
   }
-});
 
-// Start the login process
-slack.start();
-
-// Returns an array of all the channels the bot resides in
-function getChannels(allChannels) {
-  let channels = [];
-
-  // Loop over all channels
-  for (let id in allChannels) {
-    // get an individual channel
-    let channel = allChannels[id];
-
-    // is this user a member of the channel?
-    if (channel.is_member) {
-      // if so, push it to the array
-      channels.push(channel);
-    }
+  // Return the name of the bot
+  getName() {
+    return this.name;
   }
-  return channels;
+
+  setTypingIndicator(channel) {
+    this.slack.send({ type: 'typing', channel: channel.id });
+  }
+
+  getMembersByChannel(channel) {
+    // If the channel has no members then that means we're in a DM
+    if (!channel.members) {
+      return false;
+    }
+
+    // Only select members which are active and not a bot
+    let members = channel.members.filter((member) => {
+      let m = this.slack.dataStore.getUserById(member);
+      // Make sure the member is active (i.e. not set to 'away' status)
+      return (m.presence === 'active' && !m.is_bot);
+    });
+
+    // Get the names of the members
+    members = members.map((member) => {
+      return this.slack.dataStore.getUserById(member).name;
+    });
+
+    return members;
+  }
+
+  respondTo(keywords, callback, start) {
+    // If 'start' is truthy, prepend the '^' anchor to instruct the
+    // expression to look for matches at the beginning of the string
+    if (start) {
+      keywords = '^' + keywords;
+    }
+
+    // Create a new regular expression, setting the case insensitive (i) flag
+    // Note: avoid using the global (g) flag
+    let regex = new RegExp(keywords, 'i');
+
+    // Set the regular expression to be the key, with the callback function as the value
+    this.keywords.set(regex, callback);
+  }
 }
+
+// Export the Bot class, which will be imported when 'require' is used
+module.exports = Bot;

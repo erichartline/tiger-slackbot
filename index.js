@@ -1,13 +1,35 @@
 'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
+const Bot = require('./Bot');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// require config with API keys
+let config = require('./config');
+// set API token from config.js
+let token = config.api.token;
+
+const bot = new Bot({
+  token: token,
+  autoReconnect: true,
+  autoMark: true
+});
+
+bot.respondTo('hello', (message, channel, user) => {
+  bot.send(`Hello to you too, ${user.name}!`, channel)
+}, true);
+
+bot.respondTo('help', (message, channel) => {
+  bot.send(`This is where you will eventually find help`, channel);
+}, true);
+
 const url = "question-data.json";
 
-app.post('/', (req, res) => {
+
+
+// app.post('/', (req, res) => {
   // let text = req.body.text;
   // conditional to check if command is correct
   // if(! /^\d+$/.test(q.text)) { // not a digit
@@ -26,25 +48,25 @@ app.post('/', (req, res) => {
   //     }
   // ]};
 
-  res.json(response);
-});
-
-fetch(url)
-.then(function(data) {
-  let question = data.question;
-  let category = data.category;
-  let source = data.source;
-
-  let response = {
-    question: question,
-    category: category,
-    source: source
-  }
-
-})
-.catch(function(err) {
-  console.log(err);
-})
+//   res.json(response);
+// });
+//
+// fetch(url)
+// .then(function(data) {
+//   let question = data.question;
+//   let category = data.category;
+//   let source = data.source;
+//
+//   let response = {
+//     question: question,
+//     category: category,
+//     source: source
+//   }
+//
+// })
+// .catch(function(err) {
+//   console.log(err);
+// })
 
 const server = app.listen(8000, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);});
