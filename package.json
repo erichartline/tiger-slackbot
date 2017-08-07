@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wildlifehexagon/bears-team-27#readme",
   "dependencies": {
+    "@slack/client": "^3.10.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3"
   }
