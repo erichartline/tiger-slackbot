@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // require config with API keys
 let config = require('./config');
 // set API token from config.js
-let token = config.api.token;
+let token = process.env['SLACK_TEAM_TOKEN'];
 
 //JSON data async load and format
 const fs = require('fs');
