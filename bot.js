@@ -4,11 +4,11 @@ const RtmClient = require('@slack/client').RtmClient;
 const MemoryDataStore = require('@slack/client').MemoryDataStore;
 const CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
 const RTM_EVENTS = require('@slack/client').RTM_EVENTS;
-const config = require('./config');
+// const config = require('./config');
 
 class bot {
   constructor(opts) {
-    let slackToken = config.api.token;
+    let slackToken = process.env['SLACK_TEAM_TOKEN'];
     let autoReconnect = opts.autoReconnect || true;
     let autoMark = opts.autoMark || true;
 
