@@ -85,7 +85,7 @@ function sendMessageToSlackResponseURL(responseURL, JSONmessage){
 
 // TODO -> update this route once hosted on server
 app.get('/', function(req, res) {
-    res.send('Ngrok is working! Path Hit: ' + req.url);
+    res.send('Heroku is working! Path Hit: ' + req.url);
 });
 
 // route for GET request to a /oauth endpoint. This endpoint handles the logic of the Slack oAuth process with the app behind the scenes.
