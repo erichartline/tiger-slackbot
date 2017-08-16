@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Bot = require('./Bot');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,6 +61,6 @@ bot.respondTo('ask me a question', (message, channel) => {
 
 //const url = "question-data.json";
 
-const server = app.listen(8000, () => {
+const server = app.listen(PORT, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
