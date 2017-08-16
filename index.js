@@ -39,32 +39,7 @@ function pickRandomQuestion(questionData) {
 };
 /* end JSON data load and format */
 
-let subscribeMessage = {
-    "text": "Would you like to receive a random interview question every day?",
-    "attachments": [
-        {
-            "text": "Choose yes or no",
-            "fallback": "You are unable to make a selection",
-            "callback_id": "subscription",
-            "color": "#3AA3E3",
-            "attachment_type": "default",
-            "actions": [
-                {
-                    "name": "answer",
-                    "text": "Yes",
-                    "type": "button",
-                    "value": "yes"
-                },
-                {
-                    "name": "answer",
-                    "text": "No",
-                    "type": "button",
-                    "value": "no"
-                }
-            ]
-        }
-    ]
-};
+
 
 const bot = new Bot({
   token: token,
@@ -80,12 +55,38 @@ bot.respondTo('help', (message, channel) => {
   bot.send(`This is where you will eventually find help`, channel);
 }, true);
 
-bot.respondTo('ask me a question', (message, channel) => {
+bot.respondTo('question', (message, channel) => {
   let question = pickRandomQuestion(questionData);
   bot.send(question, channel);
 }, false);
 
 bot.respondTo('daily', (message, channel) => {
+  let subscribeMessage = {
+      "text": "Would you like to receive a random interview question every day?",
+      "attachments": [
+          {
+              "text": "Choose yes or no",
+              "fallback": "You are unable to make a selection",
+              "callback_id": "subscription",
+              "color": "#3AA3E3",
+              "attachment_type": "default",
+              "actions": [
+                  {
+                      "name": "answer",
+                      "text": "Yes",
+                      "type": "button",
+                      "value": "yes"
+                  },
+                  {
+                      "name": "answer",
+                      "text": "No",
+                      "type": "button",
+                      "value": "no"
+                  }
+              ]
+          }
+      ]
+  };
   bot.send(subscribeMessage, channel);
 }, true);
 
