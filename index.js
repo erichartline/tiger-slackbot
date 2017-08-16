@@ -1,17 +1,27 @@
 'use strict';
 
 const express = require('express');
+const request = require('request');
 const bodyParser = require('body-parser');
-const Bot = require('./Bot');
+const Bot = require('./bot');
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// require config with API keys
+//set
+//let urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+// require config with API keys, Client ID and Client Secret
 let config = require('./config');
 // set API token from config.js
-let token = config.api.token;
+let token = config.apiToken;
+// set app ID and Secret
+let clientId = config.clientId;
+let clientSecret = config.clientSecret;
+//set app verification token
+let verToken = config.verification;
+
 
 //JSON data async load and format
 const fs = require('fs');
@@ -39,33 +49,6 @@ function pickRandomQuestion(questionData) {
 };
 /* end JSON data load and format */
 
-let subscribeMessage = {
-    "text": "Would you like to receive a random interview question every day?",
-    "attachments": [
-        {
-            "text": "Choose yes or no",
-            "fallback": "You are unable to make a selection",
-            "callback_id": "subscription",
-            "color": "#3AA3E3",
-            "attachment_type": "default",
-            "actions": [
-                {
-                    "name": "answer",
-                    "text": "Yes",
-                    "type": "button",
-                    "value": "yes"
-                },
-                {
-                    "name": "answer",
-                    "text": "No",
-                    "type": "button",
-                    "value": "no"
-                }
-            ]
-        }
-    ]
-};
-
 const bot = new Bot({
   token: token,
   autoReconnect: true,
@@ -85,10 +68,37 @@ bot.respondTo('ask me a question', (message, channel) => {
   bot.send(question, channel);
 }, false);
 
-bot.respondTo('daily', (message, channel) => {
-  bot.send(subscribeMessage, channel);
-}, true);
+bot.respondTo('daily', (channel) => {
+    let attachmentObj = {
+        "text": "Would you like to receive a random interview question every day?",
+        "attachments": [
+            {
+                "text": "Choose yes or no",
+                "fallback": "You are unable to make a selection",
+                "callback_id": "subscription",
+                "color": "#3AA3E3",
+                "attachment_type": "default",
+                "actions": [
+                    {
+                        "name": "answer",
+                        "text": "Yes",
+                        "type": "button",
+                        "value": "yes"
+                    },
+                    {
+                        "name": "answer",
+                        "text": "No",
+                        "type": "button",
+                        "value": "no"
+                    }
+                ]
+            }
+        ]
+    };
+    bot.interact(attachmentObj, channel);
+}, false);
 
-const server = app.listen(8000, () => {
+/* Create server and manage routes for get/post request handling */
+const server = app.listen(4390, () => {
   console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
