@@ -1,20 +1,15 @@
 'use strict';
 
 const RtmClient = require('@slack/client').RtmClient;
-const WebClient = require('@slack/client').WebClient;
 const MemoryDataStore = require('@slack/client').MemoryDataStore;
 const CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
 const RTM_EVENTS = require('@slack/client').RTM_EVENTS;
-const config = require('./config');
 
-class Bot {
+class bot {
   constructor(opts) {
-    let slackToken = config.apiToken;
+    let slackToken = process.env['SLACK_TEAM_TOKEN'];
     let autoReconnect = opts.autoReconnect || true;
     let autoMark = opts.autoMark || true;
-
-    //create slack web api instance for chat.postMessage call later
-    this.webSlack = new WebClient(slackToken);
 
     this.slack = new RtmClient(slackToken, {
       logLevel: 'error',
@@ -66,17 +61,6 @@ class Bot {
     });
   }
 
-  // post a message to a channel with web API method
-  interact(attachmentObj, channel) {
-    this.webSlack.chat.postMessage(
-      channel,
-      attachmentObj,
-      function(response) {
-        console.log(response);
-      }
-    );
-  };
-
   // Return the name of the bot
   getName() {
     return this.name;
@@ -124,4 +108,4 @@ class Bot {
 }
 
 // Export the Bot class, which will be imported when 'require' is used
-module.exports = Bot;
+module.exports = bot;
