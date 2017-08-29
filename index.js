@@ -150,6 +150,44 @@ app.post('/dailyquestions', function(req, res) {
     }
 });
 
+// Route the endpoint for /daily slash command and send back the response
+app.post('/tester', function(req, res) {
+    res.status(200).end() // best practice to respond with empty 200 status code
+    var reqBody = req.body;
+    var responseURL = reqBody.response_url;
+    if (reqBody.token != verToken) {
+        res.status(403).end("Access forbidden")//case where token not received or not correct in message
+    } else {
+        var message = {
+            "text": "Would you like to receive a random interview question every day?",
+            "attachments": [
+                {
+                    "text": "Choose yes or no",
+                    "fallback": "You are unable to make a selection",
+                    "callback_id": "subscription",
+                    "color": "#3AA3E3",
+                    "attachment_type": "default",
+                    "actions": [
+                        {
+                            "name": "yes",
+                            "text": "Yes",
+                            "type": "button",
+                            "value": "yes"
+                        },
+                        {
+                            "name": "no",
+                            "text": "No",
+                            "type": "button",
+                            "value": "no"
+                        }
+                    ]
+                }
+            ]
+        }
+        sendMessageToSlackResponseURL(responseURL, message)
+    }
+});
+
 // Route the endpoint for /subscribe slash command and send back the response
 app.post('/subscribe', function(req, res) {
     res.status(200).end() // best practice to respond with empty 200 status code
@@ -158,7 +196,7 @@ app.post('/subscribe', function(req, res) {
     if (reqBody.token != verToken) {
         res.status(403).end("Access forbidden")//case where token not received or not correct in message
     } else {
-      request({
+      request ({
           url: 'https://slack.com/api/reminders.add', //URL to send to
           qs: {token: token, text: 'reminder', time: 'every day'}, //Query string data
           method: 'POST', //Specify REST method
