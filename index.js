@@ -115,11 +115,11 @@ app.get('/oauth', function(req, res) {
 // Route the endpoint for /daily slash command and send back the response
 app.post('/dailyquestions', function(req, res) {
     res.status(200).end() // best practice to respond with empty 200 status code
-    var reqBody = req.body
-    var responseURL = reqBody.response_url
-    if (reqBody.token != verToken){
+    var reqBody = req.body;
+    var responseURL = reqBody.response_url;
+    if (reqBody.token != verToken) {
         res.status(403).end("Access forbidden")//case where token not received or not correct in message
-    }else{
+    } else {
         var message = {
             "text": "Would you like to receive a random interview question every day?",
             "attachments": [
@@ -150,28 +150,52 @@ app.post('/dailyquestions', function(req, res) {
     }
 });
 
-// subscription method
+// Route the endpoint for /subscribe slash command and send back the response
 app.post('/subscribe', function(req, res) {
-    // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, respond with err message
-    if (!req.query.code) {
-        res.status(500);
-        res.send({"Error": "Looks like we're not getting code."});
-        console.log("Looks like we're not getting code.");
+    res.status(200).end() // best practice to respond with empty 200 status code
+    var reqBody = req.body;
+    var responseURL = reqBody.response_url;
+    if (reqBody.token != verToken) {
+        res.status(403).end("Access forbidden")//case where token not received or not correct in message
     } else {
-        request({
-            url: 'https://slack.com/api/reminders.add', //URL to send to
-            qs: {token: token, text: 'reminder', time: 'every day'}, //Query string data
-            method: 'POST', //Specify REST method
+      request({
+          url: 'https://slack.com/api/reminders.add', //URL to send to
+          qs: {token: token, text: 'reminder', time: 'every day'}, //Query string data
+          method: 'POST', //Specify REST method
 
-        }, function (error, response, body) {
-            if (error) {
-                console.log(error);
-            } else {
-                res.json(body);
-            }
-        });
+      }, function (error, response, body) {
+          if (error) {
+              console.log(error);
+          } else {
+              res.json(body);
+          }
+      });
+        sendMessageToSlackResponseURL(responseURL, message)
     }
 });
+
+// subscription method
+// app.post('/subscribe', function(req, res) {
+//     // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, respond with err message
+//     if (!req.query.code) {
+//         res.status(500);
+//         res.send({"Error": "Looks like we're not getting code."});
+//         console.log("Looks like we're not getting code.");
+//     } else {
+//         request({
+//             url: 'https://slack.com/api/reminders.add', //URL to send to
+//             qs: {token: token, text: 'reminder', time: 'every day'}, //Query string data
+//             method: 'POST', //Specify REST method
+//
+//         }, function (error, response, body) {
+//             if (error) {
+//                 console.log(error);
+//             } else {
+//                 res.json(body);
+//             }
+//         });
+//     }
+// });
 
 app.post('/actions', (req, res) => {
     res.status(200).end() // best practice to respond with 200 status code
