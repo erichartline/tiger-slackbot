@@ -158,18 +158,33 @@ app.post('/tester', function(req, res) {
     if (reqBody.token != verToken) {
         res.status(403).end("Access forbidden")//case where token not received or not correct in message
     } else {
-      request({
-          url: 'https://slack.com/api/reminders.add', //URL to send to
-          qs: {token: token, text: 'reminder', time: 'every day'}, //Query string data, //Query string data
-          method: 'GET', //Specify REST method
-
-      }, function (error, response, body) {
-          if (error) {
-              console.log(error);
-          } else {
-              res.json(body);
-          }
-      });
+        var message = {
+            "text": "Would you like to receive a random interview question every day?",
+            "attachments": [
+                {
+                    "text": "Choose yes or no",
+                    "fallback": "You are unable to make a selection",
+                    "callback_id": "subscription",
+                    "color": "#3AA3E3",
+                    "attachment_type": "default",
+                    "actions": [
+                        {
+                            "name": "yes",
+                            "text": "Yes",
+                            "type": "button",
+                            "value": "yes"
+                        },
+                        {
+                            "name": "no",
+                            "text": "No",
+                            "type": "button",
+                            "value": "no"
+                        }
+                    ]
+                }
+            ]
+        }
+        sendMessageToSlackResponseURL(responseURL, message)
     }
 });
 
