@@ -84,7 +84,7 @@ bot.respondTo('ask me a question', (message, channel) => {
 }, false);
 
 bot.respondTo('ask me a technical question', (message, channel) => {
-  let question = pickTechnicalQuestion(questionData);
+  let question = pickTechQuestion(questionData);
   bot.send(question, channel);
 }, false);
 
