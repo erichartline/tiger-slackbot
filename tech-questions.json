@@ -1,0 +1,264 @@
+{
+    "questions": [
+        {
+            "question":"What is Big O notation, and why is it useful?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What is the DOM?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What is the event loop?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What is a closure?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"How does prototypal inheritance work, and how is it different from classical inheritance?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"Describe a few ways to communicate between a server and a client. Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What is REST, and why do people use it?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"My website is slow. Walk me through diagnosing and fixing it. What are some performance optimizations people use, and when should they be used?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"What frameworks have you used? What are the pros and cons of each? Why do people use frameworks? What kinds of problems do frameworks solve?",
+            "category":"Technical",
+            "source":"https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-%28written-by-a-Frontend-Engineer%29"
+        },
+        {
+            "question":"Explain event delegation.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What do you think of AMD vs CommonJS?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain why the following doesn't work as an IIFE: function foo(){ }();.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What needs to be changed to properly make it an IIFE?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between a variable that is: null, undefined or undeclared?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"How would you go about checking for any of these states?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is a closure, and how/why would you use one?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's a typical use case for anonymous functions?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"How do you organize your code? (module pattern, classical inheritance?)",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between host objects and native objects?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Difference between: function Person(){}, var person = Person(), and var person = new Person()?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between .call and .apply?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain Function.prototype.bind.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"When would you use document.write()?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between feature detection, feature inference, and using the UA string?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain Ajax in as much detail as possible.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What are the advantages and disadvantages of using Ajax?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain how JSONP works (and how it's not really Ajax).",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Have you ever used JavaScript templating? If so, what libraries have you used?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain 'hoisting'.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What's the difference between an 'attribute' and a 'property'?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Why is extending built-in JavaScript objects not a good idea?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Difference between document load event and document DOMContentLoaded event?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is the difference between == and ===?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain the same-origin policy with regards to JavaScript.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Make this work: duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Why is it called a Ternary expression, what does the word 'Ternary' indicate?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is 'use strict';? what are the advantages and disadvantages to using it?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Create a for loop that iterates up to 100 while outputting 'fizz' at multiples of 3, 'buzz' at multiples of 5 and 'fizzbuzz' at multiples of 3 and 5",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Why would you use something like the load event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain what a single page app is and how to make one SEO-friendly.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is the extent of your experience with Promises and/or their polyfills?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What are the pros and cons of using Promises instead of callbacks?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What tools and techniques do you use debugging JavaScript code?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What language constructions do you use for iterating over object properties and array items?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain the difference between mutable and immutable objects.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What is an example of an immutable object in JavaScript?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"What are the pros and cons of immutability?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"How can you achieve immutability in your own code?",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain the difference between synchronous and asynchronous functions.",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        },
+        {
+            "question":"Explain the differences on the usage of foo between function foo() {} and var foo = function() {}",
+            "category":"Technical",
+            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
+        }
+    ]
+}

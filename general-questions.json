@@ -1,0 +1,409 @@
+{
+    "questions": [
+        {
+            "question":"Can you tell me a little about yourself?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Why should we hire you?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What are your greatest professional strengths?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What do you consider to be your weaknesses?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What is your greatest professional achievement?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Tell me about a challenge or conflict you've faced at work, and how you dealt with it.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Where do you see yourself in five years?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What's your dream job?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Why are you leaving your current job?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What are you looking for in a new position?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What type of work environment do you prefer?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What's a time you exercised leadership?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What's a time you disagreed with a decision that was made at work?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"How would your boss and co-workers describe you?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Why was there a gap in your employment?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Can you explain why you changed career paths?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"How do you deal with pressure or stressful situations?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What would your first 30, 60, or 90 days look like in this role?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"What do you like to do outside of work?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"If you were an animal, which one would you want to be?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
+        },
+        {
+            "question":"Talk about a time when you had to work closely with someone whose personality was very different from yours.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time you faced a conflict while working on a team. How did you handle that?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when you struggled to build a relationship with someone important. How did you eventually overcome that?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"We all make mistakes we wish we could take back. Tell me about a time you wish you’d handled a situation differently with a colleague.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you needed to get information from someone who wasn’t very responsive. What did you do?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when it was especially important to make a good impression on a client. How did you go about doing so?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time when you did not meet a client’s expectation. What happened, and how did you attempt to rectify the situation?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time when you made sure a customer was pleased with your service.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when you had to interact with a difficult client. What was the situation, and how did you handle it?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"When you’re working with a large number of customers, it’s tricky to deliver excellent service to them all. How do you go about prioritizing your customers’ needs?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you were under a lot of pressure. What was going on, and how did you get through it?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when your team or company was undergoing some change. How did that impact you, and how did you adapt?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about the first job you’ve ever had. What did you do to learn the ropes?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time when you had to think on your feet in order to delicately extricate yourself from a difficult or awkward situation.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you failed. How did you deal with this situation?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you had to be very strategic in order to meet all your top priorities.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a long-term project that you managed. How did you keep everything moving along in a timely manner?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Sometimes it’s just not possible to get everything on your to-do list done. Tell me about a time your responsibilities got a little overwhelming. What did you do?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you set a goal for yourself. How did you go about ensuring that you would meet your objective?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time you managed numerous responsibilities. How did you handle that?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time when you were able to successfully persuade someone to see things your way at work.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when you were the resident technical expert. What did you do to make sure everyone was able to understand you?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time when you had to rely on written communication to get your ideas across to your team.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time when you had to explain something fairly complex to a frustrated client. How did you handle this delicate situation?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a successful presentation you gave and why you think it was a hit.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about your proudest professional accomplishment.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Describe a time when you saw some problem and took the initiative to correct it rather than waiting for someone else to do it.",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time when you worked under close supervision or extremely loose supervision. How did you handle that?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Give me an example of a time you were able to be creative with your work. What was exciting or difficult about it?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"Tell me about a time you were dissatisfied in your work. What could have been done to make it better?",
+            "category":"General",
+            "source":"https://www.themuse.com/advice/30-behavioral-interview-questions-you-should-be-ready-to-answer-1"
+        },
+        {
+            "question":"What can you offer us that someone else can not?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What are three things your former manager would like you to improve on?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Tell me about a time you made a mistake.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Discuss your resume.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Discuss your educational background.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Describe yourself.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Tell me how you handled a difficult situation.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"How would you deal with an angry or irate customer?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Give a time when you went above and beyond the requirements for a project.",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What was your biggest failure?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What motivates you?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Who’s your mentor?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What gets you up in the morning?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"Are you a leader or a follower?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What was the last book you’ve read for fun?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What is your favorite website?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What makes you uncomfortable?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"What are some of your leadership experiences?",
+            "category":"General",
+            "source":"https://www.glassdoor.com/blog/common-interview-questions/"
+        },
+        {
+            "question":"How would you describe yourself in one word?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"How does this position compare to others you are applying for?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Have you ever considered being an entrepreneur?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Have you ever stolen a pen from work?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"What kind of boss and coworkers have you had the most and least success with, and why?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"If you could work for any company, where would you work?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"How do you define success?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"What career regrets do you have?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"What would you do if you won $5 million tomorrow?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Have you ever been asked to compromise your integrity by your supervisor or colleague? Tell us about it.",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Can you give us a reason someone may not like working with you?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"Tell me about a time you disagreed with a company policy.",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        },
+        {
+            "question":"How did you make time for this interview? Where does your boss think you are right now?",
+            "category":"General",
+            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
+        }
+    ]
+}
