@@ -52,7 +52,7 @@ bot.respondTo('hello', (message, channel, user) => {
   bot.send(`Hello to you too, ${user.name}!`, channel)
 }, true);
 
-bot.respondTo('/help', (message, channel) => {
+bot.respondTo('/tiger-help', (message, channel) => {
   bot.send(`This is where you will eventually find help`, channel);
     {
     "text": "What would you like help with?",
