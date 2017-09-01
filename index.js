@@ -45,13 +45,9 @@ function pickTechQuestion(questionData) {
     let result;
     let count = 0;
     for (let prop in questionData.questions) {
-      if (questionData.questions[prop].category === "technical") {
         if (Math.random() < 1/++count) {
            result = questionData.questions[prop].question;
         }
-      } else {
-        pickGeneralQuestion(questionData);
-      }
     };
     return result;
 };
