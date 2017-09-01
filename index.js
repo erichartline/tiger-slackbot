@@ -19,15 +19,30 @@ let verToken = process.env['VERIFICATION_TOKEN'];
 //JSON data async load and format
 const fs = require('fs');
 const dataFile = './question-data.json';
+const techData = './tech-questions.json';
+const generalData = './general-questions.json';
+
 var questionData;
 
 /* Read the file and send to the callback */
-fs.readFile(dataFile, getQuestionFile)
+fs.readFile(dataFile, getQuestionFile);
+fs.readFile(techData, techCallback);
+fs.readFile(generalData, generalCallback);
 
 // Write the callback function
 function getQuestionFile(err, data) {
     if (err) throw err;
     questionData = JSON.parse(data);
+};
+
+function techCallback(err, data) {
+    if (err) throw err;
+    techQuestions = JSON.parse(data);
+};
+
+function generalCallback(err, data) {
+    if (err) throw err;
+    generalQuestions = JSON.parse(data);
 };
 
 function pickRandomQuestion(questionData) {
@@ -41,30 +56,26 @@ function pickRandomQuestion(questionData) {
     return result;
 };
 
-function pickTechQuestion(questionData) {
-    let result;
-    let count = 0;
-    for (let prop in questionData.questions) {
-        if (Math.random() < 1/++count) {
-           result = questionData.questions[prop].question;
-        }
-    };
-    return result;
+function pickTechQuestion(techQuestions) {
+  let result;
+  let count = 0;
+  for (let prop in techQuestions.questions) {
+      if (Math.random() < 1/++count) {
+         result = techQuestions.questions[prop].question;
+      }
+  };
+  return result;
 };
 
-function pickGeneralQuestion(questionData) {
-    let result;
-    let count = 0;
-    for (let prop in questionData.questions) {
-      if (questionData.questions[prop].category === "general") {
-        if (Math.random() < 1/++count) {
-           result = questionData.questions[prop].question;
-        }
-      } else {
-        pickTechQuestion(questionData);
+function pickGeneralQuestion(generalQuestions) {
+  let result;
+  let count = 0;
+  for (let prop in generalQuestions.questions) {
+      if (Math.random() < 1/++count) {
+         result = generalQuestions.questions[prop].question;
       }
-    };
-    return result;
+  };
+  return result;
 };
 /* end JSON data load and format */
 
@@ -84,12 +95,12 @@ bot.respondTo('ask me a question', (message, channel) => {
 }, false);
 
 bot.respondTo('ask me a technical question', (message, channel) => {
-  let question = pickTechQuestion(questionData);
+  let question = pickTechQuestion(techQuestions);
   bot.send(question, channel);
 }, false);
 
 bot.respondTo('ask me a general question', (message, channel) => {
-  let question = pickGeneralQuestion(questionData);
+  let question = pickGeneralQuestion(generalQuestions);
   bot.send(question, channel);
 }, false);
 
