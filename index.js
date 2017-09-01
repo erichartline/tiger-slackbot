@@ -61,7 +61,7 @@ function pickGeneralQuestion(questionData) {
            result = questionData.questions[prop].question;
         }
       } else {
-        pickTechnicalQuestion(questionData);
+        pickTechQuestion(questionData);
       }
     };
     return result;
