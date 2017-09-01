@@ -23,6 +23,8 @@ const techData = './tech-questions.json';
 const generalData = './general-questions.json';
 
 var questionData;
+var techQuestions;
+var generalQuestions;
 
 /* Read the file and send to the callback */
 fs.readFile(dataFile, getQuestionFile);
