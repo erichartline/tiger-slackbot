@@ -40,6 +40,36 @@ function pickRandomQuestion(questionData) {
     };
     return result;
 };
+
+function pickTechQuestion(questionData) {
+    let result;
+    let count = 0;
+    for (let prop in questionData.questions) {
+      if (questionData.questions[prop].category === "technical") {
+        if (Math.random() < 1/++count) {
+           result = questionData.questions[prop].question;
+        }
+      } else {
+        pickGeneralQuestion(questionData);
+      }
+    };
+    return result;
+};
+
+function pickGeneralQuestion(questionData) {
+    let result;
+    let count = 0;
+    for (let prop in questionData.questions) {
+      if (questionData.questions[prop].category === "general") {
+        if (Math.random() < 1/++count) {
+           result = questionData.questions[prop].question;
+        }
+      } else {
+        pickTechnicalQuestion(questionData);
+      }
+    };
+    return result;
+};
 /* end JSON data load and format */
 
 const bot = new Bot({
@@ -52,12 +82,18 @@ bot.respondTo('hello', (message, channel, user) => {
   bot.send(`Hello to you too, ${user.name}!`, channel)
 }, true);
 
-bot.respondTo('help', (message, channel) => {
-  bot.send(`This is where you will eventually find help`, channel);
-}, true);
-
 bot.respondTo('ask me a question', (message, channel) => {
   let question = pickRandomQuestion(questionData);
+  bot.send(question, channel);
+}, false);
+
+bot.respondTo('ask me a technical question', (message, channel) => {
+  let question = pickTechnicalQuestion(questionData);
+  bot.send(question, channel);
+}, false);
+
+bot.respondTo('ask me a general question', (message, channel) => {
+  let question = pickGeneralQuestion(questionData);
   bot.send(question, channel);
 }, false);
 
