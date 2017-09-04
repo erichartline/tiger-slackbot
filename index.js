@@ -22,9 +22,14 @@ const dataFile = './question-data.json';
 const techData = './tech-questions.json';
 const generalData = './general-questions.json';
 
-var questionData;
-var techQuestions;
-var generalQuestions;
+/* Create server and manage routes for get/post request handling */
+const server = app.listen(PORT, () => {
+  console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
+});
+
+let questionData;
+let techQuestions;
+let generalQuestions;
 
 /* Read the file and send to the callback */
 fs.readFile(dataFile, getQuestionFile);
@@ -87,10 +92,6 @@ const bot = new Bot({
   autoMark: true
 });
 
-bot.respondTo('hello', (message, channel, user) => {
-  bot.send(`Hello to you too, ${user.name}!`, channel)
-}, true);
-
 bot.respondTo('ask me a question', (message, channel) => {
   let question = pickRandomQuestion(questionData);
   bot.send(question, channel);
@@ -105,11 +106,6 @@ bot.respondTo('ask me a general question', (message, channel) => {
   let question = pickGeneralQuestion(generalQuestions);
   bot.send(question, channel);
 }, false);
-
-/* Create server and manage routes for get/post request handling */
-const server = app.listen(PORT, () => {
-  console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
-});
 
 //helper function for delivering responses to command response URLs
 function sendMessageToSlackResponseURL(responseURL, JSONmessage){
@@ -191,11 +187,11 @@ app.post('/dailyquestions', function(req, res) {
                 }
             ]
         }
-        sendMessageToSlackResponseURL(responseURL, message)
+        sendMessageToSlackResponseURL(responseURL, message);
     }
 });
 
-// subscription method
+// subscription method CURRENTLY NOT FUNCTIONAL
 app.post('/subscribe', function(req, res) {
     // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, respond with err message
     if (!req.query.code) {
@@ -230,12 +226,12 @@ app.post('/actions', (req, res) => {
 
 app.post('/tiger-help', function(req, res) {
     res.status(200).end() // best practice to respond with empty 200 status code
-    var reqBody = req.body
-    var responseURL = reqBody.response_url
+    var reqBody = req.body;
+    var responseURL = reqBody.response_url;
     if (reqBody.token != verToken){
         res.status(403).end("Access forbidden")//case where token not received or not correct in message
-    }else{
-        var menu = {
+    } else{
+        var helpMenu = {
             "text": "What would you like help with?",
             "response_type": "in_channel",
             "attachments": [
@@ -269,7 +265,6 @@ app.post('/tiger-help', function(req, res) {
                 }
             ]
         }
-        bot.send(menu, ${user.name}!, channel);
-       // sendMessageToSlackResponseURL(responseURL, menu)
+       sendMessageToSlackResponseURL(responseURL, helpMenu);
     }
 });
