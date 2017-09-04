@@ -241,7 +241,7 @@ app.post('/actions', (req, res) => {
     sendMessageToSlackResponseURL(actionJSONPayload.response_url, message)
 });
 
-app.post('/tiger help', function(req, res) {
+app.post('/tiger-help', function(req, res) {
     res.status(200).end() // best practice to respond with empty 200 status code
     var reqBody = req.body
     var responseURL = reqBody.response_url
