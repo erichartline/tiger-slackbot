@@ -1,4 +1,21 @@
 {
+    "help": [
+        {
+            "text": "About",
+            "value": "about",
+            "response": "TIGER or 'Technical Interview and General Enquiry Robot' is a collaborative effort between Erin Hartline, Austin Steed and Erin Stalzer to build an interactive bot to help those preparing for techincal interviews."
+        },
+        {
+            "text": "Subscribing to Daily Questions",
+            "value": "subscribe",
+            "response": "To subscribe to receive a new question daily from the bot, type '/dailyquestions'"
+        },
+        {
+            "text": "Unsubscribing from daily questions",
+            "value": "unsubscribe",
+            "response": "To unsubscribe from daily questions, type '/unsubscribe'"
+        }
+    ],
     "questions": [
         {
             "question":"Can you tell me a little about yourself?",

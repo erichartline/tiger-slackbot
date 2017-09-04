@@ -289,3 +289,49 @@ app.post('/actions', (req, res) => {
     }
     sendMessageToSlackResponseURL(actionJSONPayload.response_url, message)
 });
+
+app.post('/tiger-help', function(req, res) {
+    res.status(200).end() // best practice to respond with empty 200 status code
+    var reqBody = req.body
+    var responseURL = reqBody.response_url
+    if (reqBody.token != verToken){
+        res.status(403).end("Access forbidden")//case where token not received or not correct in message
+    }else{
+        var menu = {
+            "text": "What would you like help with?",
+            "response_type": "in_channel",
+            "attachments": [
+                {
+                    "text": "Choose a topic",
+                    "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+                    "color": "#3AA3E3",
+                    "attachment_type": "default",
+                    "callback_id": "help_command",
+                    "actions": [
+                        {
+                            "name": "help_list",
+                            "text": "Pick a help topic...",
+                            "type": "select",
+                            "options": [
+                                {
+                                    "text": "About",
+                                    "value": "about"
+                                },
+                                {
+                                    "text": "Subscribing to Daily Questions",
+                                    "value": "subscribe"
+                                },
+                                {
+                                    "text": "Unsubscribing from daily questions",
+                                    "value": "unsubscribe"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+        bot.send(menu, ${user.name}!, channel);
+       // sendMessageToSlackResponseURL(responseURL, menu)
+    }
+});
