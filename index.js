@@ -187,7 +187,7 @@ app.post('/dailyquestions', function(req, res) {
                 }
             ]
         }
-        sendMessageToSlackResponseURL(responseURL, message);
+        sendMessageToSlackResponseURL(responseURL, message)
     }
 });
 
@@ -265,6 +265,7 @@ app.post('/tiger-help', function(req, res) {
                 }
             ]
         }
-       sendMessageToSlackResponseURL(responseURL, helpMenu);
+        bot.send(menu, ${user.name}!, channel);
+      //  sendMessageToSlackResponseURL(responseURL, helpMenu);
     }
 });
