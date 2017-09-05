@@ -265,7 +265,6 @@ app.post('/tiger-help', function(req, res) {
                 }
             ]
         }
-        bot.send(menu, ${user.name}!, channel);
-      //  sendMessageToSlackResponseURL(responseURL, helpMenu);
+       sendMessageToSlackResponseURL(responseURL, helpMenu);
     }
 });
