@@ -16,6 +16,9 @@ let clientId = process.env['CLIENT_ID'];
 let clientSecret = process.env['CLIENT_SECRET'];
 let verToken = process.env['VERIFICATION_TOKEN'];
 
+//instantiate Redis client from env variable
+let client = require('redis').createClient(process.env['REDIS_URL']);
+
 //JSON data async load and format
 const fs = require('fs');
 const dataFile = './question-data.json';
@@ -92,6 +95,16 @@ const bot = new Bot({
   autoMark: true
 });
 
+//connect to Redis client
+client.on('error', (err) => {
+    console.log('Error: ' + err);
+});
+
+client.on('connect', () => {
+    console.log('Connected to Redis data store.');
+});
+
+//bot responses
 bot.respondTo('ask me a question', (message, channel) => {
   let question = pickRandomQuestion(questionData);
   bot.send(question, channel);
@@ -214,6 +227,7 @@ app.post('/subscribe', function(req, res) {
     }
 });
 
+//handle response from /dailyquestions slash command input
 app.post('/actions', (req, res) => {
     res.status(200).end() // best practice to respond with 200 status code
     let actionJSONPayload = JSON.parse(req.body.payload) // parse URL-encoded JSON string in res payload object
