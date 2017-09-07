@@ -3,6 +3,7 @@
 const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
+const cron = require('node-cron');
 const Bot = require('./bot');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -136,9 +137,6 @@ function sendMessageToSlackResponseURL(responseURL, JSONmessage){
         }
     });
 }
-
-//helper function for delivering message to designated channel
-
 
 // TODO -> update this route once hosted on server
 app.get('/', function(req, res) {
@@ -463,6 +461,22 @@ app.post('/actions', (req, res) => {
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
         }
+        //respond to "Subscribe" option
+        if (actionJSONPayload.actions[0].selected_options[0].value == 'subscribe') {
+            let message = {
+                "text": "Here is the subscribe text!",
+                "replace_original": true
+            };
+            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+        }
+        //respond to "Unsubscribe" option
+        if (actionJSONPayload.actions[0].selected_options[0].value == 'unsubscribe') {
+            let message = {
+                "text": "Here is the unsubscribe text!",
+                "replace_original": true
+            };
+            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+        }
     }
 });
 
@@ -473,7 +487,7 @@ app.post('/tiger-help', function(req, res) {
     var responseURL = reqBody.response_url;
     if (reqBody.token != verToken){
         res.status(403).end("Access forbidden")//case where token not received or not correct in message
-    } else{
+    } else {
         var helpMenu = {
             "text": "What would you like help with?",
             "response_type": "in_channel",
@@ -511,3 +525,52 @@ app.post('/tiger-help', function(req, res) {
        sendMessageToSlackResponseURL(responseURL, helpMenu);
     }
 });
+
+//helper funciton for getting subscriptions (keys) from Redis
+let cursor = 0;
+
+function scan() {
+    client.scan(cursor, function(err, reply){
+      if(err){
+          throw err;
+      }
+      cursor = reply[0];
+      if(cursor === '0'){
+          return console.log('Scan Complete');
+      }else{
+          return scan();
+      }
+    });
+};
+
+/* set cron jobs to post questions to users on their respective schedules */
+
+//set global variable for list of subscription users
+let subscriptions = scan();
+
+//set up morning cron job
+if (subscriptions.length > 0) {
+    cron.schedule('10 * * * *', function() {
+        console.log('running a task every 10 seconds');
+        subscriptions.forEach( function(user) {
+            client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
+                if (err) {
+                    console.log("Error: " + err);
+                }
+                if (reply[0] == "morning") {
+                    let channel = "@" + user;
+                    if (reply[1] == "general") {
+                        let question = pickGeneralQuestion(generalQuestions);
+                        bot.send(question, channel);
+                    } else if (reply[1] == "technical") {
+                        let question = pickTechnicalQuestion(technicalQuestions);
+                        bot.send(question, channel); 
+                    } else if (reply[1] == "mix") {
+                        let question = pickRandomQuestion(questionData);
+                        bot.send(question, channel);
+                    }
+                }
+            });
+        });
+    });
+}
