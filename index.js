@@ -227,17 +227,37 @@ app.post('/subscribe', function(req, res) {
     }
 });
 
+//helper functions for management of user subscription responses with Redis client
+
+
 //handle response from /dailyquestions slash command input
 app.post('/actions', (req, res) => {
     res.status(200).end() // best practice to respond with 200 status code
     let actionJSONPayload = JSON.parse(req.body.payload) // parse URL-encoded JSON string in res payload object
-    let message = {
-        "text": actionJSONPayload.user.name + " clicked: " + actionJSONPayload.actions[0].name,
-        "replace_original": true
+    let userResponse = actionJSONPayload.actions[0].name;
+
+    if (userResponse == 'yes') {
+        let message = {
+            "text": "Thanks for subscribing, " + actionJSONPayload.user.name,
+            "replace_original": true
+        }
+        client.set(actionJSONPayload.user.name, {subscribe: actionJSONPayload.actions[0].name}, (err) => {
+            if (err) {
+                sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not store that properly:' + err);
+            } else {
+                sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+            }
+        })
+    } else {
+        let message = {
+            "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
+            "replace_original": true 
+        }
+        sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
     }
-    sendMessageToSlackResponseURL(actionJSONPayload.response_url, message)
 });
 
+//handle response for help requests
 app.post('/tiger-help', function(req, res) {
     res.status(200).end() // best practice to respond with empty 200 status code
     var reqBody = req.body;
