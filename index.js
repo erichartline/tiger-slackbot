@@ -299,7 +299,7 @@ app.post('/actions', (req, res) => {
             "text": "Alright, " + actionJSONPayload.user.name + ", it's done. Please keep me in mind for future openings!",
             "replace_original": true 
         }
-        client.hdel(actionJSONPayload.user.name, (err) => {
+        client.del(actionJSONPayload.user.name, (err) => {
             if (err) {
                 sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not handle that request:' + err);
             } else {
