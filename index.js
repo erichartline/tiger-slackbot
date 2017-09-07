@@ -545,12 +545,10 @@ function scan() {
     });
 };
 
-scan();
-
 /* set cron jobs to post questions to users on their respective schedules */
 
 //set up morning cron job
-    cron.schedule('10 * * * *', function() {
+scan().cron.schedule('10 * * * *', function() {
         console.log('running a task every 10 seconds');
         subscriptions.forEach( function(user) {
             client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
