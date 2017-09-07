@@ -536,7 +536,7 @@ function scan() {
       if(err){
           throw err;
       }
-      cursor = reply[0];
+      //cursor = reply[0];
       if (cursor === '0') {
         return console.log('Scan Complete');
       } else {
