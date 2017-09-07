@@ -302,13 +302,13 @@ app.post('/actions', (req, res) => {
                     "text": "Nope, no subscription found for " + actionJSONPayload.user.name,
                     "replace_original": true 
                 };
-                console.log("response was null");
                 sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
             } else {
                 let message = {
                     "text": "Yes, you currently have a subscription. You may keep it, delete it, or overwrite it.",
                     "replace_original": true 
                 };
+                sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
             }
         });
     }
