@@ -191,8 +191,7 @@ app.post('/dailyquestions', function(req, res) {
                             "name": "yes",
                             "text": "Yes",
                             "type": "button",
-                            "value": "yes",
-                            "style": "primary"
+                            "value": "yes"
                         },
                         {
                             "name": "no",
@@ -269,8 +268,8 @@ app.post('/actions', (req, res) => {
                     ]
                 }
             ]
-        }
-        client.set(actionJSONPayload.user.name, (err) => {
+        };
+        client.hset(actionJSONPayload.user.name, "subscription", actionJSONPayload.actions[0].name, (err) => {
             if (err) {
                 sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not store that properly:' + err);
             } else {
@@ -283,7 +282,7 @@ app.post('/actions', (req, res) => {
                     sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
                 })
             }
-        })
+        });
     }
     //respond to first question "no" response
     if (actionJSONPayload.actions[0].name == 'no' || actionJSONPayload.actions[0].name == 'cancel') {
