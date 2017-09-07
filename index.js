@@ -270,7 +270,7 @@ app.post('/actions', (req, res) => {
                 }
             ]
         }
-        client.hset(actionJSONPayload.user.name, "subscribe", actionJSONPayload.actions[0].name, (err) => {
+        client.set(actionJSONPayload.user.name, (err) => {
             if (err) {
                 sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not store that properly:' + err);
             } else {
