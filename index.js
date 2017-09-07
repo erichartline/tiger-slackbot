@@ -200,6 +200,13 @@ app.post('/dailyquestions', function(req, res) {
                             "value": "no"
                         },
                         {
+                            "name": "exists",
+                            "text": "Do I Have One?",
+                            "type": "button",
+                            "style": "default",
+                            "value": "exists"
+                        },
+                        {
                             "name": "delete",
                             "text": "Delete",
                             "type": "button",
@@ -284,12 +291,34 @@ app.post('/actions', (req, res) => {
             }
         });
     }
+    //respond to first question "exists" response value
+    if (actionJSONPayload.actions[0].name == 'exists') {
+        client.hget(actionJSONPayload.user.name, "subscription", (err, reply) => {
+            if (err) {
+                console.log(err);
+                return;
+            } else if (reply == null) {
+                let message = {
+                    "text": "Nope, no subscription found for " + actionJSONPayload.user.name,
+                    "replace_original": true 
+                };
+                console.log("response was null");
+                sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+            } else {
+                let message = {
+                    "text": "Yes, you currently have a subscription. You may keep it, delete it, or overwrite it.",
+                    "replace_original": true 
+                };
+            }
+        });
+    }
+
     //respond to first question "no" response
     if (actionJSONPayload.actions[0].name == 'no' || actionJSONPayload.actions[0].name == 'cancel') {
         let message = {
             "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
             "replace_original": true 
-        }
+        };
         sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
     }
     //delete users subscription based on "delete" response
