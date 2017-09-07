@@ -543,6 +543,8 @@ function scan() {
         if (cursor === '0') {
             console.log('Scan Complete');
             subscriptions = reply[1];
+        } else {
+            scan();
         }
     });
 };
