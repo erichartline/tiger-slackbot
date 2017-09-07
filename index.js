@@ -459,7 +459,7 @@ app.post('/actions', (req, res) => {
         if (actionJSONPayload.actions[0].selected_options[0].value == 'about') {
             let message = {
                 "text": "Here is the about text!",
-                "replace_original": false
+                "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
         }
