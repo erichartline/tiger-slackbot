@@ -238,7 +238,7 @@ function deleteUserInRedis(user) {
     })
 };
 
-function assigneSubscriptionTime(user, time) {
+function assignSubscriptionTime(user, time) {
     client.hset(user, "subscriptionTime", time, (err) => {
         if (err) {
             console.log('Error: ' + err);
@@ -254,7 +254,7 @@ function assigneSubscriptionTime(user, time) {
     });
 };
 
-function assigneSubscriptionType(user, type) {
+function assignSubscriptionType(user, type) {
     client.hset(user, "subscriptionType", type, (err) => {
         if (err) {
             console.log('Error: ' + err);
