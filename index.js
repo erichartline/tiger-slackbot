@@ -228,113 +228,244 @@ app.post('/dailyquestions', function(req, res) {
 });
 
 //helper functions for management of user subscription responses with Redis client
+function deleteUserInRedis(user) {
+    client.del(user, (err) => {
+        if (err) {
+            console.log('Error:' + err);
+        } else {
+            console.log("User Key Deleted from Redis Datastore");
+        }
+    })
+};
 
+function assigneSubscriptionTime(user, time) {
+    client.hset(user, "subscriptionTime", time, (err) => {
+        if (err) {
+            console.log('Error: ' + err);
+        } else {
+            client.hget(user, "subscriptionTime", (err, reply) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log("Subscription time set for "  + reply);
+            })
+        }
+    });
+};
+
+function assigneSubscriptionType(user, type) {
+    client.hset(user, "subscriptionType", type, (err) => {
+        if (err) {
+            console.log('Error: ' + err);
+        } else {
+            client.hget(user, "subscriptionType", (err, reply) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log("Subscription type set for "  + reply);
+            })
+        }
+    });
+};
 
 //handle response from /dailyquestions slash command input
 app.post('/actions', (req, res) => {
     res.status(200).end() // best practice to respond with 200 status code
     let actionJSONPayload = JSON.parse(req.body.payload) // parse URL-encoded JSON string in res payload object
 
-    //respond to first question to confirm subscription and create user key
-    if (actionJSONPayload.actions[0].name == 'yes') {
-        let message = {
-            "text": "Great! What time is good for you?",
-            "attachments": [
-                {
-                    "text": "Pick an option",
-                    "fallback": "You weren't able to make a selection",
-                    "callback_id": "subscription2",
-                    "color": "#3AA3E3",
-                    "attachment_type": "default",
-                    "actions": [
-                        {
-                            "name": "morning",
-                            "text": "Morning",
-                            "type": "button",
-                            "value": "1"
-                        },
-                        {
-                            "name": "afternoon",
-                            "text": "Afternoon",
-                            "type": "button",
-                            "value": "2"
-                        },
-                        {
-                            "name": "evening",
-                            "text": "Evening",
-                            "type": "button",
-                            "value": "3"
-                        },
-                        {
-                            "name": "cancel",
-                            "text": "Cancel",
-                            "type": "button",
-                            "style": "danger",
-                            "value": "4"
-                        }
-                    ]
-                }
-            ]
-        };
-        client.hset(actionJSONPayload.user.name, "subscription", actionJSONPayload.actions[0].name, (err) => {
-            if (err) {
-                sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not store that properly:' + err);
-            } else {
-                client.hget(actionJSONPayload.user.name, "subscription", (err, reply) => {
-                    if (err) {
-                        console.log(err);
-                        return;
+    //respond to first question
+    if (actionJSONPayload.callback_id == 'subscription') {
+        //respond to confirm subscription and create user key
+        if (actionJSONPayload.actions[0].name == 'yes') {
+            let message = {
+                "text": "Great! What time is good for you?",
+                "attachments": [
+                    {
+                        "text": "Pick an option",
+                        "fallback": "You weren't able to make a selection",
+                        "callback_id": "subscriptionTime",
+                        "color": "#3AA3E3",
+                        "attachment_type": "default",
+                        "actions": [
+                            {
+                                "name": "morning",
+                                "text": "Morning",
+                                "type": "button",
+                                "value": "1"
+                            },
+                            {
+                                "name": "afternoon",
+                                "text": "Afternoon",
+                                "type": "button",
+                                "value": "2"
+                            },
+                            {
+                                "name": "evening",
+                                "text": "Evening",
+                                "type": "button",
+                                "value": "3"
+                            },
+                            {
+                                "name": "cancel",
+                                "text": "Cancel",
+                                "type": "button",
+                                "style": "danger",
+                                "value": "4"
+                            }
+                        ]
                     }
-                    console.log("user said" + reply);
+                ]
+            };
+            client.hset(actionJSONPayload.user.name, "subscription", actionJSONPayload.actions[0].name, (err) => {
+                if (err) {
+                    sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not store that properly:' + err);
+                } else {
+                    client.hget(actionJSONPayload.user.name, "subscription", (err, reply) => {
+                        if (err) {
+                            console.log(err);
+                            return;
+                        }
+                        console.log("user said" + reply);
+                        sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+                    })
+                }
+            });
+        }
+        //respond to "exists" response
+        if (actionJSONPayload.actions[0].name == 'exists') {
+            client.hget(actionJSONPayload.user.name, "subscription", (err, reply) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                } else if (reply == null) {
+                    let message = {
+                        "text": "Nope, no subscription found for " + actionJSONPayload.user.name,
+                        "replace_original": true 
+                    };
                     sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
-                })
+                } else {
+                    let message = {
+                        "text": "Yes, you currently have a subscription. You may keep it, delete it, or overwrite it.",
+                        "replace_original": true 
+                    };
+                    sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+                }
+            });
+        }
+
+        //respond to "no" response
+        if (actionJSONPayload.actions[0].name == 'no') {
+            let message = {
+                "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
+                "replace_original": true 
+            };
+            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+        }
+        //delete users subscription based on "delete" response
+        if (actionJSONPayload.actions[0].name == 'delete') {
+            let message = {
+                "text": "Alright, " + actionJSONPayload.user.name + ", it's done. Please keep me in mind for future openings!",
+                "replace_original": true 
             }
-        });
-    }
-    //respond to first question "exists" response value
-    if (actionJSONPayload.actions[0].name == 'exists') {
-        client.hget(actionJSONPayload.user.name, "subscription", (err, reply) => {
-            if (err) {
-                console.log(err);
-                return;
-            } else if (reply == null) {
-                let message = {
-                    "text": "Nope, no subscription found for " + actionJSONPayload.user.name,
-                    "replace_original": true 
-                };
-                sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
-            } else {
-                let message = {
-                    "text": "Yes, you currently have a subscription. You may keep it, delete it, or overwrite it.",
-                    "replace_original": true 
-                };
-                sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
-            }
-        });
+            client.del(actionJSONPayload.user.name, (err) => {
+                if (err) {
+                    sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not handle that request:' + err);
+                } else {
+                    console.log("user subscription deleted");
+                    sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+                }
+            })
+        }
+    };
+
+    //respond to second question
+    if (actionJSONPayload.callback_id == 'subscriptionTime') {
+        //respond to  "cancel" response, also deleting user key
+        if (actionJSONPayload.actions[0].name == 'cancel') {
+            let message = {
+                "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
+                "replace_original": true 
+            };
+            deleteUserInRedis(actionJSONPayload.user.name);
+            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+        }
+        //respond to other responses and set time for user
+        else {
+            let message = {
+                "text": "What type of questions do you want?",
+                "attachments": [
+                    {
+                        "text": "Just general, just technical, or a random mix?",
+                        "fallback": "You are unable to make a selection",
+                        "callback_id": "subscriptionType",
+                        "color": "#3AA3E3",
+                        "attachment_type": "default",
+                        "actions": [
+                            {
+                                "name": "general",
+                                "text": "General",
+                                "type": "button",
+                                "value": "general"
+                            },
+                            {
+                                "name": "technical",
+                                "text": "Technical",
+                                "type": "button",
+                                "value": "technical"
+                            },
+                            {
+                                "name": "mix",
+                                "text": "Surprise Me",
+                                "type": "button",
+                                "value": "mix"
+                            },
+                            {
+                                "name": "cancel",
+                                "text": "Cancel",
+                                "type": "button",
+                                "style": "danger",
+                                "value": "cancel"
+                            }
+                        ]
+                    }
+                ]
+            };
+            assignSubscriptionTime(actionJSONPayload.user.name, actionJSONPayload.actions[0].name);
+            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+        }
     }
 
-    //respond to first question "no" response
-    if (actionJSONPayload.actions[0].name == 'no' || actionJSONPayload.actions[0].name == 'cancel') {
-        let message = {
-            "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
-            "replace_original": true 
-        };
-        sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
-    }
-    //delete users subscription based on "delete" response
-    if (actionJSONPayload.actions[0].name == 'delete') {
-        let message = {
-            "text": "Alright, " + actionJSONPayload.user.name + ", it's done. Please keep me in mind for future openings!",
-            "replace_original": true 
+    //respond to third question
+    if (actionJSONPayload.callback_id == 'subscriptionType') {
+        //respond to  "cancel" response, also deleting user key
+        if (actionJSONPayload.actions[0].name == 'cancel') {
+            let message = {
+                "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
+                "replace_original": true 
+            };
+            deleteUserInRedis(actionJSONPayload.user.name);
+            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
         }
-        client.del(actionJSONPayload.user.name, (err) => {
-            if (err) {
-                sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not handle that request:' + err);
-            } else {
-                console.log("user subscription deleted");
+        //respond to other responses and set subscription type for user
+        else {
+            let subscriptionTime = "";
+            let subscriptionType = "";
+            let message = {
+                "text": "Great, you will receive a " + subscriptionType + " question every " + subscriptionTime + " via direct message!",
+                "replace_original": true 
+            };
+            assignSubscriptionType(actionJSONPayload.user.name, actionJSONPayload.actions[0].name);
+            client.hmget(actionJSONPayload.user.name, "subscriptionTime", "subscriptionType", (err, reply) => {
+                if (err) {
+                    console.log("Error: " + err);
+                }
+                subscriptionTime = reply[1];
+                subscriptionType = reply[2];
                 sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
-            }
-        })
+            });
+        }
     }
 });
 
