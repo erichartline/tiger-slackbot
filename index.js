@@ -441,7 +441,7 @@ app.post('/actions', (req, res) => {
                 "replace_original": true 
             };
 
-            client.hset(user, "subscriptionType", type, (err) => {
+            client.hset(actionJSONPayload.user.name, "subscriptionType", type, (err) => {
                 if (err) {
                     console.log('Error: ' + err);
                 } else {
