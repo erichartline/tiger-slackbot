@@ -454,7 +454,7 @@ app.post('/actions', (req, res) => {
     }
 
     //respond to help commands
-    if (action.JSONPayload.callback_id == 'helpCommand') {
+    if (actionJSONPayload.callback_id == 'helpCommand') {
         //respond to "About" option
         if (actionJSONPayload.actions.options[0].value == 'about') {
             let message = {
