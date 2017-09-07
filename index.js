@@ -542,14 +542,13 @@ function scan() {
         cursor = reply[0];
         if (cursor === '0') {
             console.log('Scan Complete');
-            console.log(reply[1]);
             subscriptions = reply[1];
         }
     });
 };
 
 scan();
-
+console.log(subscriptions);
 /* set cron jobs to post questions to users on their respective schedules */
 
 //set up morning cron job
