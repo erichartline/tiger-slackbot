@@ -550,7 +550,6 @@ scan();
 /* set cron jobs to post questions to users on their respective schedules */
 
 //set up morning cron job
-if (subscriptions.length > 0) {
     cron.schedule('10 * * * *', function() {
         console.log('running a task every 10 seconds');
         subscriptions.forEach( function(user) {
@@ -574,4 +573,3 @@ if (subscriptions.length > 0) {
             });
         });
     },true);
-}
