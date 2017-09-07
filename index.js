@@ -528,6 +528,8 @@ app.post('/tiger-help', function(req, res) {
 
 //helper funciton for getting subscriptions (keys) from Redis
 let cursor = 0;
+//set global variable for list of subscription users
+let subscriptions = [];
 
 function scan() {
     client.scan(cursor, function(err, reply){
@@ -537,16 +539,15 @@ function scan() {
       cursor = reply[0];
       if(cursor === '0'){
           return console.log('Scan Complete');
-      }else{
-          return reply[1];
+      } else {
+          subscriptions = reply[1];
       }
     });
 };
 
-/* set cron jobs to post questions to users on their respective schedules */
+scan();
 
-//set global variable for list of subscription users
-let subscriptions = scan();
+/* set cron jobs to post questions to users on their respective schedules */
 
 //set up morning cron job
 if (subscriptions.length > 0) {
