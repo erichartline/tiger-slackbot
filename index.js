@@ -273,7 +273,7 @@ app.post('/actions', (req, res) => {
             if (err) {
                 sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not store that properly:' + err);
             } else {
-                client.get(actionJSONPayload.user.name, (err, reply) => {
+                client.hget(actionJSONPayload.user.name, "subscription", (err, reply) => {
                     if (err) {
                         console.log(err);
                         return;
