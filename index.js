@@ -181,7 +181,7 @@ app.post('/dailyquestions', function(req, res) {
             "text": "Would you like to receive an interview question every day?",
             "attachments": [
                 {
-                    "text": "Choose yes or no",
+                    "text": "Choose yes, no or delete",
                     "fallback": "You are unable to make a selection",
                     "callback_id": "subscription",
                     "color": "#3AA3E3",
@@ -191,13 +191,27 @@ app.post('/dailyquestions', function(req, res) {
                             "name": "yes",
                             "text": "Yes",
                             "type": "button",
-                            "value": "yes"
+                            "value": "yes",
+                            "style": "primary"
                         },
                         {
                             "name": "no",
                             "text": "No",
                             "type": "button",
                             "value": "no"
+                        },
+                        {
+                            "name": "delete",
+                            "text": "Delete",
+                            "type": "button",
+                            "style": "danger",
+                            "value": "delete",
+                            "confirm": {
+                                "title": "Are you sure?",
+                                "text": "This will delete your subscription.",
+                                "ok_text": "Yes",
+                                "dismiss_text": "What was I thinking?!"
+                            }
                         }
                     ]
                 }
@@ -215,11 +229,8 @@ app.post('/actions', (req, res) => {
     res.status(200).end() // best practice to respond with 200 status code
     let actionJSONPayload = JSON.parse(req.body.payload) // parse URL-encoded JSON string in res payload object
 
+    //respond to first question to confirm subscription and create user key
     if (actionJSONPayload.actions[0].name == 'yes') {
-        // let message = {
-        //     "text": "Thanks for subscribing, " + actionJSONPayload.user.name,
-        //     "replace_original": true
-        // }
         let message = {
             "text": "Great! What time is good for you?",
             "attachments": [
@@ -247,12 +258,19 @@ app.post('/actions', (req, res) => {
                             "text": "Evening",
                             "type": "button",
                             "value": "3"
+                        },
+                        {
+                            "name": "cancel",
+                            "text": "Cancel",
+                            "type": "button",
+                            "style": "danger",
+                            "value": "4"
                         }
                     ]
                 }
             ]
         }
-        client.set(actionJSONPayload.user.name, actionJSONPayload.actions[0].name, (err) => {
+        client.hmset(actionJSONPayload.user.name, ["subscribe", actionJSONPayload.actions[0].name], (err) => {
             if (err) {
                 sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not store that properly:' + err);
             } else {
@@ -266,12 +284,29 @@ app.post('/actions', (req, res) => {
                 })
             }
         })
-    } else {
+    }
+    //respond to first question "no" response
+    if (actionJSONPayload.actions[0].name == 'no' || actionJSONPayload.actions[0].name == 'cancel') {
         let message = {
             "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
             "replace_original": true 
         }
         sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+    }
+    //delete users subscription based on "delete" response
+    if (actionJSONPayload.actions[0].name == 'delete') {
+        let message = {
+            "text": "Alright, " + actionJSONPayload.user.name + ", it's done. Please keep me in mind for future openings!",
+            "replace_original": true 
+        }
+        client.hdel(actionJSONPayload.user.name, (err) => {
+            if (err) {
+                sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not handle that request:' + err);
+            } else {
+                console.log("user subscription deleted");
+                sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+            }
+        })
     }
 });
 
