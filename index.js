@@ -137,6 +137,9 @@ function sendMessageToSlackResponseURL(responseURL, JSONmessage){
     });
 }
 
+//helper function for delivering message to designated channel
+
+
 // TODO -> update this route once hosted on server
 app.get('/', function(req, res) {
     res.send('Heroku is working! Path Hit: ' + req.url);
@@ -169,13 +172,13 @@ app.get('/oauth', function(req, res) {
 // Route the endpoint for /daily slash command and send back the response
 app.post('/dailyquestions', function(req, res) {
     res.status(200).end() // best practice to respond with empty 200 status code
-    var reqBody = req.body;
-    var responseURL = reqBody.response_url;
+    let reqBody = req.body;
+    let responseURL = reqBody.response_url;
     if (reqBody.token != verToken) {
         res.status(403).end("Access forbidden")//case where token not received or not correct in message
     } else {
-        var message = {
-            "text": "Would you like to receive a random interview question every day?",
+        let message = {
+            "text": "Would you like to receive an interview question every day?",
             "attachments": [
                 {
                     "text": "Choose yes or no",
@@ -204,29 +207,6 @@ app.post('/dailyquestions', function(req, res) {
     }
 });
 
-// subscription method CURRENTLY NOT FUNCTIONAL
-app.post('/subscribe', function(req, res) {
-    // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, respond with err message
-    if (!req.query.code) {
-        res.status(500);
-        res.send({"Error": "Looks like we're not getting code."});
-        console.log("Looks like we're not getting code.");
-    } else {
-        request({
-            url: 'https://slack.com/api/reminders.add', //URL to send to
-            qs: {token: token, text: 'reminder', time: 'every day'}, //Query string data
-            method: 'POST', //Specify REST method
-
-        }, function (error, response, body) {
-            if (error) {
-                console.log(error);
-            } else {
-                res.json(body);
-            }
-        });
-    }
-});
-
 //helper functions for management of user subscription responses with Redis client
 
 
@@ -234,18 +214,56 @@ app.post('/subscribe', function(req, res) {
 app.post('/actions', (req, res) => {
     res.status(200).end() // best practice to respond with 200 status code
     let actionJSONPayload = JSON.parse(req.body.payload) // parse URL-encoded JSON string in res payload object
-    let userResponse = actionJSONPayload.actions[0].name;
 
-    if (userResponse == 'yes') {
+    if (actionJSONPayload.actions[0].name == 'yes') {
+        // let message = {
+        //     "text": "Thanks for subscribing, " + actionJSONPayload.user.name,
+        //     "replace_original": true
+        // }
         let message = {
-            "text": "Thanks for subscribing, " + actionJSONPayload.user.name,
-            "replace_original": true
+            "text": "Great! What time is good for you?",
+            "attachments": [
+                {
+                    "text": "Pick an option",
+                    "fallback": "You weren't able to make a selection",
+                    "callback_id": "subscription2",
+                    "color": "#3AA3E3",
+                    "attachment_type": "default",
+                    "actions": [
+                        {
+                            "name": "morning",
+                            "text": "Morning",
+                            "type": "button",
+                            "value": "1"
+                        },
+                        {
+                            "name": "afternoon",
+                            "text": "Afternoon",
+                            "type": "button",
+                            "value": "2"
+                        },
+                        {
+                            "name": "evening",
+                            "text": "Evening",
+                            "type": "button",
+                            "value": "3"
+                        }
+                    ]
+                }
+            ]
         }
-        client.set(actionJSONPayload.user.name, {subscribe: actionJSONPayload.actions[0].name}, (err) => {
+        client.set(actionJSONPayload.user.name, actionJSONPayload.actions[0].name, (err) => {
             if (err) {
                 sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not store that properly:' + err);
             } else {
-                sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+                client.get(actionJSONPayload.user.name, (err, reply) => {
+                    if (err) {
+                        console.log(err);
+                        return;
+                    }
+                    console.log("user said" + reply);
+                    sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+                })
             }
         })
     } else {
