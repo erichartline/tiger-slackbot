@@ -532,11 +532,11 @@ let cursor = 0;
 let subscriptions = [];
 
 function scan() {
-    client.scan(cursor, function(err, reply){
+    client.scan(cursor, 'MATCH', 'CM:*', 'COUNT', '5', function(err, reply) {
       if(err){
           throw err;
       }
-      //cursor = reply[0];
+      cursor = reply[0];
       if (cursor === '0') {
         return console.log('Scan Complete');
       } else {
