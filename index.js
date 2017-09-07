@@ -538,7 +538,7 @@ function scan() {
       if(cursor === '0'){
           return console.log('Scan Complete');
       }else{
-          return scan();
+          return reply[1];
       }
     });
 };
