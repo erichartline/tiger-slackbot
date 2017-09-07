@@ -254,22 +254,6 @@ function assignSubscriptionTime(user, time) {
     });
 };
 
-function assignSubscriptionType(user, type) {
-    client.hset(user, "subscriptionType", type, (err) => {
-        if (err) {
-            console.log('Error: ' + err);
-        } else {
-            client.hget(user, "subscriptionType", (err, reply) => {
-                if (err) {
-                    console.log(err);
-                    return;
-                }
-                console.log("Subscription type set for "  + reply);
-            })
-        }
-    });
-};
-
 //handle response from /dailyquestions slash command input
 app.post('/actions', (req, res) => {
     res.status(200).end() // best practice to respond with 200 status code
@@ -456,14 +440,20 @@ app.post('/actions', (req, res) => {
                 "text": "Great, you will receive a " + subscriptionType + " question every " + subscriptionTime + " via direct message!",
                 "replace_original": true 
             };
-            assignSubscriptionType(actionJSONPayload.user.name, actionJSONPayload.actions[0].name);
-            client.hmget(actionJSONPayload.user.name, "subscriptionTime", "subscriptionType", (err, reply) => {
+
+            client.hset(user, "subscriptionType", type, (err) => {
                 if (err) {
-                    console.log("Error: " + err);
+                    console.log('Error: ' + err);
+                } else {
+                    client.hmget(actionJSONPayload.user.name, "subscriptionTime", "subscriptionType", (err, reply) => {
+                        if (err) {
+                            console.log("Error: " + err);
+                        }
+                        subscriptionTime = reply[1];
+                        subscriptionType = reply[2];
+                        sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+                    });
                 }
-                subscriptionTime = reply[1];
-                subscriptionType = reply[2];
-                sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
             });
         }
     }
