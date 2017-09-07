@@ -434,13 +434,6 @@ app.post('/actions', (req, res) => {
         }
         //respond to other responses and set subscription type for user
         else {
-            let subscriptionTime = "";
-            let subscriptionType = "";
-            let message = {
-                "text": "Great, you will receive a " + subscriptionType + " question every " + subscriptionTime + " via direct message!",
-                "replace_original": true 
-            };
-
             client.hset(actionJSONPayload.user.name, "subscriptionType", actionJSONPayload.actions[0].name, (err) => {
                 if (err) {
                     console.log('Error: ' + err);
@@ -449,8 +442,10 @@ app.post('/actions', (req, res) => {
                         if (err) {
                             console.log("Error: " + err);
                         }
-                        subscriptionTime = reply[1];
-                        subscriptionType = reply[2];
+                        let message = {
+                            "text": "Great, you will receive a " + reply[1] + " question every " + reply[2] + " via direct message!",
+                            "replace_original": true 
+                        };
                         sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
                     });
                 }
