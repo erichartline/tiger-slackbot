@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cron = require('node-cron');
 const Bot = require('./bot');
 const app = express();
+const redis = require('redis');
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
@@ -18,7 +19,9 @@ let clientSecret = process.env['CLIENT_SECRET'];
 let verToken = process.env['VERIFICATION_TOKEN'];
 
 //instantiate Redis client from env variable
-let client = require('redis').createClient(process.env['REDIS_URL']);
+let client = redis.createClient(process.env['REDIS_URL']);
+
+
 
 //JSON data async load and format
 const fs = require('fs');
@@ -532,17 +535,16 @@ let cursor = 0;
 let subscriptions = [];
 
 function scan() {
-    client.scan(cursor, 'MATCH', 'CM:*', 'COUNT', '5', function(err, reply) {
-      if(err){
-          throw err;
-      }
-      cursor = reply[0];
-      if (cursor === '0') {
-        return console.log('Scan Complete');
-      } else {
-          console.log(reply[1]);
-          return scan();
-      }
+    client.scan(cursor, function(err, reply) {
+        if(err){
+            throw err;
+        }
+        cursor = reply[0];
+        if (cursor === '0') {
+            console.log('Scan Complete');
+            console.log(reply[1]);
+            subscriptions = reply[1];
+        }
     });
 };
 
