@@ -452,6 +452,18 @@ app.post('/actions', (req, res) => {
             });
         }
     }
+
+    //respond to help commands
+    if (action.JSONPayload.callback_id == 'helpCommand') {
+        //respond to "About" option
+        if (actionJSONPayload.actions.options[0].value == 'about') {
+            let message = {
+                "text": "Here is the about text!",
+                "replace_original": false
+            };
+            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+        }
+    }
 });
 
 //handle response for help requests
@@ -471,7 +483,7 @@ app.post('/tiger-help', function(req, res) {
                     "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
                     "color": "#3AA3E3",
                     "attachment_type": "default",
-                    "callback_id": "help_command",
+                    "callback_id": "helpCommand",
                     "actions": [
                         {
                             "name": "help_list",
