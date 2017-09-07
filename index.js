@@ -456,7 +456,7 @@ app.post('/actions', (req, res) => {
     //respond to help commands
     if (actionJSONPayload.callback_id == 'helpCommand') {
         //respond to "About" option
-        if (actionJSONPayload.actions.options[0].value == 'about') {
+        if (actionJSONPayload.actions[0].options[0].value == 'about') {
             let message = {
                 "text": "Here is the about text!",
                 "replace_original": false
