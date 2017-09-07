@@ -537,18 +537,22 @@ function scan() {
           throw err;
       }
       cursor = reply[0];
-      if(cursor === '0'){
-          return console.log('Scan Complete');
+      if (cursor === '0') {
+        return console.log('Scan Complete');
       } else {
-          subscriptions = reply[1];
+          console.log(reply[1]);
+          return scan();
       }
     });
 };
 
+scan();
+
 /* set cron jobs to post questions to users on their respective schedules */
 
 //set up morning cron job
-scan().cron.schedule('10 * * * *', function() {
+if (subscriptions.length > 0) {
+    cron.schedule('10 * * * *', function() {
         console.log('running a task every 10 seconds');
         subscriptions.forEach( function(user) {
             client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
@@ -571,3 +575,4 @@ scan().cron.schedule('10 * * * *', function() {
             });
         });
     },true);
+}
