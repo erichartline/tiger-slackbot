@@ -564,10 +564,10 @@ function scan() {
 scan();
 
 /* set cron jobs to post questions to users on their respective schedules */
-if (subscribers.length > 0) {
+if (subscriptions.length > 0) {
     let timedMessages = cron.schedule('10 * * * *', function() {
         console.log('running a task every 10 seconds');
-        subscribers.forEach( function(user) {
+        subscriptions.forEach( function(user) {
             client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
                 if (err) {
                     console.log("Error: " + err);
