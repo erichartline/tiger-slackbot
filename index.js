@@ -550,7 +550,6 @@ function scan() {
 };
 
 scan();
-console.log(subscriptions);
 /* set cron jobs to post questions to users on their respective schedules */
 
 //set up morning cron job
