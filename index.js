@@ -327,13 +327,13 @@ app.post('/actions', (req, res) => {
                 } else if (reply == null) {
                     let message = {
                         "text": "Nope, no subscription found for " + actionJSONPayload.user.name,
-                        "replace_original": true 
+                        "replace_original": true
                     };
                     sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
                 } else {
                     let message = {
                         "text": "Yes, you currently have a subscription. You may keep it, delete it, or overwrite it.",
-                        "replace_original": true 
+                        "replace_original": true
                     };
                     sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
                 }
@@ -344,7 +344,7 @@ app.post('/actions', (req, res) => {
         if (actionJSONPayload.actions[0].name == 'no') {
             let message = {
                 "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
-                "replace_original": true 
+                "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
         }
@@ -352,7 +352,7 @@ app.post('/actions', (req, res) => {
         if (actionJSONPayload.actions[0].name == 'delete') {
             let message = {
                 "text": "Alright, " + actionJSONPayload.user.name + ", it's done. Please keep me in mind for future openings!",
-                "replace_original": true 
+                "replace_original": true
             }
             client.del(actionJSONPayload.user.name, (err) => {
                 if (err) {
@@ -371,7 +371,7 @@ app.post('/actions', (req, res) => {
         if (actionJSONPayload.actions[0].name == 'cancel') {
             let message = {
                 "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
-                "replace_original": true 
+                "replace_original": true
             };
             deleteUserInRedis(actionJSONPayload.user.name);
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -428,7 +428,7 @@ app.post('/actions', (req, res) => {
         if (actionJSONPayload.actions[0].name == 'cancel') {
             let message = {
                 "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
-                "replace_original": true 
+                "replace_original": true
             };
             deleteUserInRedis(actionJSONPayload.user.name);
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -445,7 +445,7 @@ app.post('/actions', (req, res) => {
                         }
                         let message = {
                             "text": "Great, you will receive a " + reply[1] + " question every " + reply[0] + " via direct message!",
-                            "replace_original": true 
+                            "replace_original": true
                         };
                         sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
                     });
@@ -459,7 +459,15 @@ app.post('/actions', (req, res) => {
         //respond to "About" option
         if (actionJSONPayload.actions[0].selected_options[0].value == 'about') {
             let message = {
-                "text": "Here is the about text!",
+                "text": "TIGER or 'Technical Interview and General Enquiry Robot' is a collaborative effort between Eric Hartline, Austin Steed and Erin Stalzer to build an interactive bot to help those preparing for technical interviews.",
+                "replace_original": true
+            };
+            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
+        }
+        //respond to "Questions" option
+        if (actionJSONPayload.actions[0].selected_options[0].value == 'questions') {
+            let message = {
+                "text": "You can get a question from TIGER by typing 'ask a question', 'ask a general question', or 'ask a technical question'.",
                 "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -467,7 +475,7 @@ app.post('/actions', (req, res) => {
         //respond to "Subscribe" option
         if (actionJSONPayload.actions[0].selected_options[0].value == 'subscribe') {
             let message = {
-                "text": "Here is the subscribe text!",
+                "text": "To subscribe to receive a new question daily from the bot, type '/dailyquestions'",
                 "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -475,7 +483,7 @@ app.post('/actions', (req, res) => {
         //respond to "Unsubscribe" option
         if (actionJSONPayload.actions[0].selected_options[0].value == 'unsubscribe') {
             let message = {
-                "text": "Here is the unsubscribe text!",
+                "text": "To unsubscribe from daily questions, type '/unsubscribe'",
                 "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -508,8 +516,8 @@ app.post('/tiger-help', function(req, res) {
                             "type": "select",
                             "options": [
                                 {
-                                    "text": "About",
-                                    "value": "about"
+                                    "text": "Getting a question",
+                                    "value": "questions"
                                 },
                                 {
                                     "text": "Subscribing to Daily Questions",
@@ -529,7 +537,7 @@ app.post('/tiger-help', function(req, res) {
     }
 });
 
-//helper funciton for getting subscriptions (keys) from Redis
+//helper function for getting subscriptions (keys) from Redis
 let cursor = 0;
 
 function scan() {
@@ -566,7 +574,7 @@ scan();
 //                         bot.send(question, channel);
 //                     } else if (reply[1] == "technical") {
 //                         let question = pickTechnicalQuestion(technicalQuestions);
-//                         bot.send(question, channel); 
+//                         bot.send(question, channel);
 //                     } else if (reply[1] == "mix") {
 //                         let question = pickRandomQuestion(questionData);
 //                         bot.send(question, channel);
