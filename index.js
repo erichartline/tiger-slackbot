@@ -543,6 +543,7 @@ function scan() {
         if (cursor === '0') {
             console.log('Scan Complete');
             subscriptions = reply[1];
+            console.log(reply[1]);
             let timedMessages = cron.schedule('10 * * * *', function() {
                 console.log('running a task every 10 seconds');
                 subscriptions.forEach( function(user) {
@@ -565,7 +566,7 @@ function scan() {
                         }
                     });
                 });
-            },true);
+            });
             timedMessages.start();
         } else {
             scan();
