@@ -540,33 +540,9 @@ function scan() {
         cursor = reply[0];
         if (cursor === '0') {
             console.log('Scan Complete');
-            let subscriptions = reply[1];
-            console.log(subscriptions);
-            let timedMessages = cron.schedule('30 * * * *', function() {
-                console.log('running a task');
-                subscriptions.forEach( function(user) {
-                    client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
-                        if (err) {
-                            console.log("Error: " + err);
-                        }
-                        if (reply[0] == "morning" || reply[0] == "afternoon" || reply[0] == "evening") {
-                            let channel = "@" + user;
-                            if (reply[1] == "general") {
-                                let question = pickGeneralQuestion(generalQuestions);
-                                bot.send(question, channel);
-                            } else if (reply[1] == "technical") {
-                                let question = pickTechnicalQuestion(technicalQuestions);
-                                bot.send(question, channel); 
-                            } else if (reply[1] == "mix") {
-                                let question = pickRandomQuestion(questionData);
-                                bot.send(question, channel);
-                            }
-                        }
-                    });
-                });
-            });
-            timedMessages.stop();
-            timedMessages.start();
+            console.log(reply[1]);
+            const subscribers = reply[1];
+            export {subscribers};
         } else {
             scan();
         }
