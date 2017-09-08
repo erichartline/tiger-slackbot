@@ -565,6 +565,7 @@ function scan() {
                     });
                 });
             });
+            timedMessages.stop();
             timedMessages.start();
         } else {
             scan();
