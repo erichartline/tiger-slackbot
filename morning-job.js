@@ -1,3 +1,5 @@
+'use strict';
+
 import {subscribers} from 'index';
 
 function sayHello() {
