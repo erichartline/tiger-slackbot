@@ -547,7 +547,7 @@ function scanAndScheduleSubs() {
         } else {
             scan();
         }
-    }).then(
+    }).$promise.then(
         /* set cron jobs to post questions to users on their respective schedules */
         function() {
             cron.schedule('10 * * * *', function() {
