@@ -564,29 +564,29 @@ function scan() {
 scan();
 
 /* set cron jobs to post questions to users on their respective schedules */
-if (subscribers.length > 0) {
-    let timedMessages = cron.schedule('10 * * * *', function() {
-        console.log('running a task every 10 seconds');
-        subscribers.forEach( function(user) {
-            client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
-                if (err) {
-                    console.log("Error: " + err);
-                }
-                if (reply[0] == "morning") {
-                    let channel = "@" + user;
-                    if (reply[1] == "general") {
-                        let question = pickGeneralQuestion(generalQuestions);
-                        bot.send(question, channel);
-                    } else if (reply[1] == "technical") {
-                        let question = pickTechnicalQuestion(technicalQuestions);
-                        bot.send(question, channel);
-                    } else if (reply[1] == "mix") {
-                        let question = pickRandomQuestion(questionData);
-                        bot.send(question, channel);
-                    }
-                }
-            });
-        });
-    },true);
-    timedMessages.start();
-}
+// if (subscribers.length > 0) {
+//     let timedMessages = cron.schedule('10 * * * *', function() {
+//         console.log('running a task every 10 seconds');
+//         subscribers.forEach( function(user) {
+//             client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
+//                 if (err) {
+//                     console.log("Error: " + err);
+//                 }
+//                 if (reply[0] == "morning") {
+//                     let channel = "@" + user;
+//                     if (reply[1] == "general") {
+//                         let question = pickGeneralQuestion(generalQuestions);
+//                         bot.send(question, channel);
+//                     } else if (reply[1] == "technical") {
+//                         let question = pickTechnicalQuestion(technicalQuestions);
+//                         bot.send(question, channel);
+//                     } else if (reply[1] == "mix") {
+//                         let question = pickRandomQuestion(questionData);
+//                         bot.send(question, channel);
+//                     }
+//                 }
+//             });
+//         });
+//     },true);
+//     timedMessages.start();
+// }
