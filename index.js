@@ -318,6 +318,7 @@ app.post('/actions', (req, res) => {
                 }
             });
         }
+
         //respond to "exists" response
         if (actionJSONPayload.actions[0].name == 'exists') {
             client.hget(actionJSONPayload.user.name, "subscription", (err, reply) => {
@@ -367,7 +368,7 @@ app.post('/actions', (req, res) => {
 
     //respond to second question
     if (actionJSONPayload.callback_id == 'subscriptionTime') {
-        //respond to  "cancel" response, also deleting user key
+        //respond to "cancel" response, also deleting user key
         if (actionJSONPayload.actions[0].name == 'cancel') {
             let message = {
                 "text": "No problem, " + actionJSONPayload.user.name + "! Let me know if you change your mind.",
@@ -515,18 +516,22 @@ app.post('/tiger-help', function(req, res) {
                             "text": "Pick a help topic...",
                             "type": "select",
                             "options": [
-                                {
-                                    "text": "Getting a question",
-                                    "value": "questions"
-                                },
-                                {
-                                    "text": "Subscribing to Daily Questions",
-                                    "value": "subscribe"
-                                },
-                                {
-                                    "text": "Unsubscribing from daily questions",
-                                    "value": "unsubscribe"
-                                }
+                              {
+                                  "text": "About TIGER Bot",
+                                  "value": "about"
+                              },
+                              {
+                                  "text": "Receiving a question",
+                                  "value": "questions"
+                              },
+                              {
+                                  "text": "Subscribing to Daily Questions",
+                                  "value": "subscribe"
+                              },
+                              {
+                                  "text": "Unsubscribing from Daily Questions",
+                                  "value": "unsubscribe"
+                              }
                             ]
                         }
                     ]
@@ -558,30 +563,30 @@ function scan() {
 
 scan();
 
-// /* set cron jobs to post questions to users on their respective schedules */
-// if (subscriptions.length > 0) {
-//     let timedMessages = cron.schedule('10 * * * *', function() {
-//         console.log('running a task every 10 seconds');
-//         subscriptions.forEach( function(user) {
-//             client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
-//                 if (err) {
-//                     console.log("Error: " + err);
-//                 }
-//                 if (reply[0] == "morning") {
-//                     let channel = "@" + user;
-//                     if (reply[1] == "general") {
-//                         let question = pickGeneralQuestion(generalQuestions);
-//                         bot.send(question, channel);
-//                     } else if (reply[1] == "technical") {
-//                         let question = pickTechnicalQuestion(technicalQuestions);
-//                         bot.send(question, channel);
-//                     } else if (reply[1] == "mix") {
-//                         let question = pickRandomQuestion(questionData);
-//                         bot.send(question, channel);
-//                     }
-//                 }
-//             });
-//         });
-//     },true);
-//     timedMessages.start();
-// }
+/* set cron jobs to post questions to users on their respective schedules */
+if (subscribers.length > 0) {
+    let timedMessages = cron.schedule('10 * * * *', function() {
+        console.log('running a task every 10 seconds');
+        subscribers.forEach( function(user) {
+            client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
+                if (err) {
+                    console.log("Error: " + err);
+                }
+                if (reply[0] == "morning") {
+                    let channel = "@" + user;
+                    if (reply[1] == "general") {
+                        let question = pickGeneralQuestion(generalQuestions);
+                        bot.send(question, channel);
+                    } else if (reply[1] == "technical") {
+                        let question = pickTechnicalQuestion(technicalQuestions);
+                        bot.send(question, channel);
+                    } else if (reply[1] == "mix") {
+                        let question = pickRandomQuestion(questionData);
+                        bot.send(question, channel);
+                    }
+                }
+            });
+        });
+    },true);
+    timedMessages.start();
+}
