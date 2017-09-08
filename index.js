@@ -357,7 +357,7 @@ app.post('/actions', (req, res) => {
             }
             client.del(actionJSONPayload.user.name, (err) => {
                 if (err) {
-                    sendMessageToSlackResponseURL(actionJSONPayload.response_url,'Uh oh, looks like I could not handle that request:' + err);
+                    sendMessageToSlackResponseURL(actionJSONPayload.response_url, 'Uh oh, looks like I could not handle that request:' + err);
                 } else {
                     console.log("user subscription deleted");
                     sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -460,7 +460,7 @@ app.post('/actions', (req, res) => {
         //respond to "About" option
         if (actionJSONPayload.actions[0].selected_options[0].value == 'about') {
             let message = {
-                "text": "TIGER or 'Technical Interview and General Enquiry Robot' is a collaborative effort between Eric Hartline, Austin Steed and Erin Stalzer to build an interactive bot to help those preparing for technical interviews.",
+                "text": "T.I.G.E.R. or 'Technical Interview and General Enquiry Robot' is a collaborative effort between Eric Hartline, Austin Steed and Erin Stalzer to build an interactive bot to help those preparing for technical interviews.",
                 "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -468,7 +468,7 @@ app.post('/actions', (req, res) => {
         //respond to "Questions" option
         if (actionJSONPayload.actions[0].selected_options[0].value == 'questions') {
             let message = {
-                "text": "You can get a question from TIGER by typing 'ask a question', 'ask a general question', or 'ask a technical question'.",
+                "text": "You can get a question from T.I.G.E.R. by typing 'ask me a question', 'ask me a general question', or 'ask me a technical question'.",
                 "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -484,7 +484,7 @@ app.post('/actions', (req, res) => {
         //respond to "Unsubscribe" option
         if (actionJSONPayload.actions[0].selected_options[0].value == 'unsubscribe') {
             let message = {
-                "text": "To unsubscribe from daily questions, type '/unsubscribe'",
+                "text": "To unsubscribe from daily questions, type '/dailyquestions' and follow the prompts.",
                 "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -517,7 +517,7 @@ app.post('/tiger-help', function(req, res) {
                             "type": "select",
                             "options": [
                               {
-                                  "text": "About TIGER Bot",
+                                  "text": "About T.I.G.E.R. Bot",
                                   "value": "about"
                               },
                               {
