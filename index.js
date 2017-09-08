@@ -542,14 +542,14 @@ function scan() {
             console.log('Scan Complete');
             let subscriptions = reply[1];
             console.log(subscriptions);
-            let timedMessages = cron.schedule('* 1 * * *', function() {
+            let timedMessages = cron.schedule('30 * * * *', function() {
                 console.log('running a task');
                 subscriptions.forEach( function(user) {
                     client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
                         if (err) {
                             console.log("Error: " + err);
                         }
-                        if (reply[0] == "morning") {
+                        if (reply[0] == "morning" || reply[0] == "afternoon" || reply[0] == "evening") {
                             let channel = "@" + user;
                             if (reply[1] == "general") {
                                 let question = pickGeneralQuestion(generalQuestions);
