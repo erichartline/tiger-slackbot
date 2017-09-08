@@ -542,7 +542,6 @@ function scan() {
             console.log('Scan Complete');
             console.log(reply[1]);
             const subscribers = reply[1];
-            export {subscribers};
         } else {
             scan();
         }
@@ -550,6 +549,8 @@ function scan() {
 };
 
 scan();
+
+module.exports.subscribers = subscribers;
 
 // /* set cron jobs to post questions to users on their respective schedules */
 // if (subscriptions.length > 0) {

@@ -1,6 +1,6 @@
 'use strict';
 
-import {subscribers} from 'index';
+let subscribers = require('./index');
 
 function sayHello() {
     console.log(subscribers);
