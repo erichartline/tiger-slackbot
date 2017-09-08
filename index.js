@@ -531,8 +531,6 @@ app.post('/tiger-help', function(req, res) {
 
 //helper funciton for getting subscriptions (keys) from Redis
 let cursor = 0;
-//set global variable for list of subscription users
-let subscriptions = [];
 
 function scan() {
     client.scan(cursor, function(err, reply) {
@@ -542,11 +540,10 @@ function scan() {
         cursor = reply[0];
         if (cursor === '0') {
             console.log('Scan Complete');
-            subscriptions = reply[1];
-            console.log(reply[1]);
-            timedMessages.stop();
+            let subscriptions = reply[1];
+            console.log(subscriptions);
             let timedMessages = cron.schedule('* 1 * * *', function() {
-                console.log('running a task every 10 seconds');
+                console.log('running a task');
                 subscriptions.forEach( function(user) {
                     client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
                         if (err) {
