@@ -544,12 +544,6 @@ function scanAndScheduleSubs() {
             console.log('Scan Complete');
             subscriptions = reply[1];
             console.log(subscriptions);
-        } else {
-            scan();
-        }
-    }).$promise.then(
-        /* set cron jobs to post questions to users on their respective schedules */
-        function() {
             cron.schedule('10 * * * *', function() {
                 console.log('running a task every 10 seconds');
                 subscriptions.forEach( function(user) {
@@ -573,10 +567,10 @@ function scanAndScheduleSubs() {
                     });
                 });
             },true);
-        }, function(err) {
-            console.log('Error: ' + err);
+        } else {
+            scan();
         }
-    );
+    });
 };
 
 scanAndScheduleSubs();
