@@ -179,10 +179,10 @@ app.post('/dailyquestions', function(req, res) {
         res.status(403).end("Access forbidden")//case where token not received or not correct in message
     } else {
         let message = {
-            "text": "Would you like to receive an interview question every day?",
+            "text": "Would you like a subscription to receive an interview question every day?",
             "attachments": [
                 {
-                    "text": "Choose yes, no or delete",
+                    "text": "Choose yes, no, delete or check if you set one up!",
                     "fallback": "You are unable to make a selection",
                     "callback_id": "subscription",
                     "color": "#3AA3E3",
