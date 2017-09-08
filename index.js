@@ -534,7 +534,7 @@ let cursor = 0;
 //set global variable for list of subscription users
 let subscriptions = [];
 
-function scan() {
+function scanAndScheduleSubs() {
     client.scan(cursor, function(err, reply) {
         if(err){
             throw err;
@@ -547,35 +547,38 @@ function scan() {
         } else {
             scan();
         }
-    });
+    }).then(
+        /* set cron jobs to post questions to users on their respective schedules */
+        function() {
+            cron.schedule('10 * * * *', function() {
+                console.log('running a task every 10 seconds');
+                subscriptions.forEach( function(user) {
+                    client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
+                        if (err) {
+                            console.log("Error: " + err);
+                        }
+                        if (reply[0] == "morning") {
+                            let channel = "@" + user;
+                            if (reply[1] == "general") {
+                                let question = pickGeneralQuestion(generalQuestions);
+                                bot.send(question, channel);
+                            } else if (reply[1] == "technical") {
+                                let question = pickTechnicalQuestion(technicalQuestions);
+                                bot.send(question, channel); 
+                            } else if (reply[1] == "mix") {
+                                let question = pickRandomQuestion(questionData);
+                                bot.send(question, channel);
+                            }
+                        }
+                    });
+                });
+            },true);
+        }, function(err) {
+            console.log('Error: ' + err);
+        }
+    );
 };
 
-scan();
-/* set cron jobs to post questions to users on their respective schedules */
+scanAndScheduleSubs();
 
-//set up morning cron job
-if (subscriptions.length > 0) {
-    cron.schedule('10 * * * *', function() {
-        console.log('running a task every 10 seconds');
-        subscriptions.forEach( function(user) {
-            client.hmget(user, "subscriptionTime", "subscriptionType", (err, reply) => {
-                if (err) {
-                    console.log("Error: " + err);
-                }
-                if (reply[0] == "morning") {
-                    let channel = "@" + user;
-                    if (reply[1] == "general") {
-                        let question = pickGeneralQuestion(generalQuestions);
-                        bot.send(question, channel);
-                    } else if (reply[1] == "technical") {
-                        let question = pickTechnicalQuestion(technicalQuestions);
-                        bot.send(question, channel); 
-                    } else if (reply[1] == "mix") {
-                        let question = pickRandomQuestion(questionData);
-                        bot.send(question, channel);
-                    }
-                }
-            });
-        });
-    },true);
-}
+
