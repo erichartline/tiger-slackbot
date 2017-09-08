@@ -550,8 +550,6 @@ function scan() {
 
 scan();
 
-module.exports.subscribers = subscribers;
-
 // /* set cron jobs to post questions to users on their respective schedules */
 // if (subscriptions.length > 0) {
 //     let timedMessages = cron.schedule('10 * * * *', function() {
