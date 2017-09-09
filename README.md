@@ -15,4 +15,4 @@ T.I.G.E.R. or 'Technical Interview and General Enquiry Robot' is an interactive 
 `/dailyquestions` - allows the user to sign up for a subscription to receive a random question in their inbox everyday (NOTE: this is a work in progress)
 
 ### Deployment
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+Coming soon
