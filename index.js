@@ -473,18 +473,10 @@ app.post('/actions', (req, res) => {
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
         }
-        //respond to "Subscribe" option
+        //respond to "Subscribe/Unsubscribe" option
         if (actionJSONPayload.actions[0].selected_options[0].value == 'subscribe') {
             let message = {
-                "text": "To subscribe to receive a new question daily from the bot, type '/dailyquestions'",
-                "replace_original": true
-            };
-            sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
-        }
-        //respond to "Unsubscribe" option
-        if (actionJSONPayload.actions[0].selected_options[0].value == 'unsubscribe') {
-            let message = {
-                "text": "To unsubscribe from daily questions, type '/dailyquestions' and follow the prompts.",
+                "text": "To subscribe to receive a new question daily from the bot, type '/dailyquestions'. You can also unsubscribe by following the prompts using the same command.",
                 "replace_original": true
             };
             sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
@@ -525,12 +517,8 @@ app.post('/tiger-help', function(req, res) {
                                   "value": "questions"
                               },
                               {
-                                  "text": "Subscribing to Daily Questions",
+                                  "text": "Subscribing and unsubscribing to Daily Questions",
                                   "value": "subscribe"
-                              },
-                              {
-                                  "text": "Unsubscribing from Daily Questions",
-                                  "value": "unsubscribe"
                               }
                             ]
                         }
