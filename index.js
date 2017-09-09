@@ -164,7 +164,7 @@ app.get('/oauth', function(req, res) {
             if (error) {
                 console.log(error);
             } else {
-                res.json(body);
+                res.send("T.I.G.E.R. Bot has been added!");
             }
         });
     }
