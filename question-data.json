@@ -71,11 +71,6 @@
             "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
         },
         {
-            "question":"Why was there a gap in your employment?",
-            "category":"General",
-            "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
-        },
-        {
             "question":"Can you explain why you changed career paths?",
             "category":"General",
             "source":"https://www.themuse.com/advice/how-to-answer-the-31-most-common-interview-questions"
@@ -356,11 +351,6 @@
             "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
         },
         {
-            "question":"Have you ever stolen a pen from work?",
-            "category":"General",
-            "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
-        },
-        {
             "question":"What kind of boss and coworkers have you had the most and least success with, and why?",
             "category":"General",
             "source":"http://www.businessinsider.com/job-interview-questions-that-will-trick-you-2016-9/#whats-a-difficult-situation-that-you-turned-around-describe-it-to-us-21"
@@ -466,17 +456,7 @@
             "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
         },
         {
-            "question":"What needs to be changed to properly make it an IIFE?",
-            "category":"Technical",
-            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
-        },
-        {
             "question":"What's the difference between a variable that is: null, undefined or undeclared?",
-            "category":"Technical",
-            "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
-        },
-        {
-            "question":"How would you go about checking for any of these states?",
             "category":"Technical",
             "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
         },
@@ -561,7 +541,7 @@
             "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
         },
         {
-            "question":"Difference between document load event and document DOMContentLoaded event?",
+            "question":"What is the difference between document load event and document DOMContentLoaded event?",
             "category":"Technical",
             "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
         },
@@ -586,7 +566,7 @@
             "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
         },
         {
-            "question":"What is 'use strict';? what are the advantages and disadvantages to using it?",
+            "question":"What is 'use strict';? What are the advantages and disadvantages to using it?",
             "category":"Technical",
             "source":"https://github.com/h5bp/Front-end-Developer-Interview-Questions"
         },
