@@ -12,7 +12,7 @@ T.I.G.E.R. or 'Technical Interview and General Enquiry Robot' is an interactive 
 
 `/tiger-help` - provides a menu with information about the bot and its features
 
-`/dailyquestions` - allows the user to sign up for a subscription to receive a random question in their inbox everyday (work in progress)
+`/dailyquestions` - allows the user to sign up for a subscription to receive a random question in their inbox everyday (NOTE: this is a work in progress)
 
 ### Deployment
-Details coming soon
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)

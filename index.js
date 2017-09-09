@@ -445,7 +445,7 @@ app.post('/actions', (req, res) => {
                             console.log("Error: " + err);
                         }
                         let message = {
-                            "text": "Great, you will receive a " + reply[1] + " question every " + reply[0] + " via direct message!",
+                            "text": "Great, you will receive a " + reply[1] + " question every " + reply[0] + " via direct message! NOTE: This feature is a work in progress!",
                             "replace_original": true
                         };
                         sendMessageToSlackResponseURL(actionJSONPayload.response_url, message);
