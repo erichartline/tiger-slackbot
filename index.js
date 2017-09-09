@@ -21,8 +21,6 @@ let verToken = process.env['VERIFICATION_TOKEN'];
 //instantiate Redis client from env variable
 let client = redis.createClient(process.env['REDIS_URL']);
 
-
-
 //JSON data async load and format
 const fs = require('fs');
 const dataFile = './question-data.json';
