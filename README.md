@@ -15,4 +15,4 @@ T.I.G.E.R. or 'Technical Interview and General Enquiry Robot' is an interactive 
 `/dailyquestions` - allows the user to sign up for a subscription to receive a random question in their inbox everyday (NOTE: this is a work in progress)
 
 ### Deployment
-Coming soon
+[Add to Slack](https://slack.com/oauth/authorize?&client_id=218906016293.218241335313&scope=bot,commands,incoming-webhook)
